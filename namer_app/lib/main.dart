@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 /// Ponto de entrada da aplicação.
-/// Chama o método runApp, que inicializa o Flutter e inflama o widget raiz.
+/// Chama o método runApp, que inicializa o Flutter e inflama o wid  raiz.
 void main() {
   runApp(MyApp());
 }
@@ -32,8 +32,15 @@ class MyApp extends StatelessWidget {
 }
 
 // ChangeNotifier: notifica ouvintes sobre mudanças de estado
+/// Classe que mantém o estado da aplicação.
 class MyAppState extends ChangeNotifier {
   var current = WordPair.random(); // gerar nome aleatório
+
+  /// Método que gera um novo nome aleatório
+  void getNext() {
+    current = WordPair.random();
+    notifyListeners(); // notificar ouvintes sobre a mudança para atualizar UI
+  }
 }
 
 class MyHomePage extends StatelessWidget {
@@ -47,12 +54,14 @@ class MyHomePage extends StatelessWidget {
       body: Column(
         children: [
           Text('\n\n\n\nA random AWESOME idea: Namer App'),
-          Text(appState.current.asLowerCase), // exibir nome gerado
+          Text(
+            appState.current.asPascalCase, // exibir nome gerado definindo case
+          ),
           // Botão
           ElevatedButton(
-            // Função chamada ao pressionar o botão
             onPressed: () {
-              print("Botão pressionado");
+              // Função chamada ao pressionar o botão
+              appState.getNext(); // gerar novo nome
             },
             // Conteúdo do botão
             child: Text("Próximo"),
