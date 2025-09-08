@@ -9,6 +9,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // Widget root da aplicação
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -34,9 +35,23 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
 
+    // Scaffold: estrutura básica de layout visual
     return Scaffold(
+      // layout em coluna
       body: Column(
-        children: [Text('A random idea:'), Text(appState.current.asLowerCase)],
+        children: [
+          Text('\n\n\n\nA random AWESOME idea: Namer App'),
+          Text(appState.current.asLowerCase), // exibir nome gerado
+          // Botão
+          ElevatedButton(
+            // Função chamada ao pressionar o botão
+            onPressed: () {
+              print("Botão pressionado");
+            },
+            // Conteúdo do botão
+            child: Text("Próximo"),
+          ),
+        ],
       ),
     );
   }
