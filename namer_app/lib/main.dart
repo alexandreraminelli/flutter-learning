@@ -91,7 +91,12 @@ class BigCard extends StatelessWidget {
       color: theme.colorScheme.primary, // background do card: cor primária
       child: Padding(
         padding: const EdgeInsets.all(20), // espaçamento ao redor do card
-        child: Text(pair.asPascalCase, style: style),
+        child: Text(
+          pair.asPascalCase,
+          style: style,
+          semanticsLabel:
+              "${pair.first} ${pair.second}", // rótulo para leitores de tela
+        ),
       ),
     );
   }
