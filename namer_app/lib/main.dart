@@ -31,8 +31,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// ChangeNotifier: notifica ouvintes sobre mudanças de estado
 class MyAppState extends ChangeNotifier {
-  var current = WordPair.random();
+  var current = WordPair.random(); // gerar nome aleatório
 }
 
 class MyHomePage extends StatelessWidget {
