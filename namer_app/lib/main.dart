@@ -56,9 +56,8 @@ class MyHomePage extends StatelessWidget {
         // layout em coluna
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          spacing: 16,
+          spacing: 8,
           children: [
-            Text('Nome aleatório gerado:'),
             // exibir par de nomes gerado:
             BigCard(pair: pair),
             // Botão
