@@ -51,22 +51,27 @@ class MyHomePage extends StatelessWidget {
 
     // Scaffold: estrutura básica de layout visual
     return Scaffold(
-      // layout em coluna
-      body: Column(
-        children: [
-          Text('\n\n\n\nA random AWESOME idea: Namer App'),
-          // exibir par de nomes gerado:
-          BigCard(pair: pair),
-          // Botão
-          ElevatedButton(
-            onPressed: () {
-              // Função chamada ao pressionar o botão
-              appState.getNext(); // gerar novo nome
-            },
-            // Conteúdo do botão
-            child: Text("Próximo"),
-          ),
-        ],
+      // centralizar elementos no meio da tela
+      body: Center(
+        // layout em coluna
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          spacing: 16,
+          children: [
+            Text('Nome aleatório gerado:'),
+            // exibir par de nomes gerado:
+            BigCard(pair: pair),
+            // Botão
+            ElevatedButton(
+              onPressed: () {
+                // Função chamada ao pressionar o botão
+                appState.getNext(); // gerar novo nome
+              },
+              // Conteúdo do botão
+              child: Text("Próximo"),
+            ),
+          ],
+        ),
       ),
     );
   }
