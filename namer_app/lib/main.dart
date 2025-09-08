@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
           // Esquema de cores
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
         ),
         home: MyHomePage(), // chamar widget da página inicial
       ),
@@ -80,9 +80,19 @@ class BigCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20), // espaçamento ao redor do card
-      child: Text(pair.asPascalCase),
+    final theme = Theme.of(context); // obter tema atual
+    // Estilo do texto
+    final style = theme.textTheme.displayMedium!.copyWith(
+      color: theme.colorScheme.onPrimary, // cor legível na cor primária
+      fontSize: 24, // tamanho da fonte
+    );
+
+    return Card(
+      color: theme.colorScheme.primary, // background do card: cor primária
+      child: Padding(
+        padding: const EdgeInsets.all(20), // espaçamento ao redor do card
+        child: Text(pair.asPascalCase, style: style),
+      ),
     );
   }
 }
