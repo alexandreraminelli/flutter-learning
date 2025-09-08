@@ -2,6 +2,8 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+/// Ponto de entrada da aplicação.
+/// Chama o método runApp, que inicializa o Flutter e inflama o widget raiz.
 void main() {
   runApp(MyApp());
 }
@@ -14,13 +16,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
+      // usar Material Design
       child: MaterialApp(
-        title: 'Namer App',
+        // Título da aplicação
+        title: 'App de Nomes',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+          // Esquema de cores
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
-        home: MyHomePage(),
+        home: MyHomePage(), // chamar widget da página inicial
       ),
     );
   }
