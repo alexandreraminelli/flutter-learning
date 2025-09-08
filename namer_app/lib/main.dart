@@ -46,7 +46,8 @@ class MyAppState extends ChangeNotifier {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
+    var appState = context.watch<MyAppState>(); // Acessar o estado da aplicação
+    var pair = appState.current; // Par de palavras atual
 
     // Scaffold: estrutura básica de layout visual
     return Scaffold(
@@ -54,9 +55,8 @@ class MyHomePage extends StatelessWidget {
       body: Column(
         children: [
           Text('\n\n\n\nA random AWESOME idea: Namer App'),
-          Text(
-            appState.current.asPascalCase, // exibir nome gerado definindo case
-          ),
+          // exibir par de nomes gerado:
+          BigCard(pair: pair),
           // Botão
           ElevatedButton(
             onPressed: () {
@@ -69,5 +69,17 @@ class MyHomePage extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+/// Card com texto em destaque.
+class BigCard extends StatelessWidget {
+  const BigCard({super.key, required this.pair});
+
+  final WordPair pair;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(pair.asPascalCase);
   }
 }
