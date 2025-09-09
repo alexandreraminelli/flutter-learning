@@ -56,7 +56,17 @@ class MyAppState extends ChangeNotifier {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+// _ (underscore): classe privada
+/// Estado do widget MyHomePage
+class _MyHomePageState extends State<MyHomePage> {
+  /// Índice do item selecionado na barra de navegação
+  var selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,11 +87,12 @@ class MyHomePage extends StatelessWidget {
                   label: Text("Favoritos"),
                 ),
               ], // lista de itens de navegação
-              selectedIndex: 0, // Página atual
+              selectedIndex: selectedIndex, // Página atual
+              // Função chamada ao selecionar um item:
               onDestinationSelected: (value) {
-                print(
-                  "Selecionado: $value",
-                ); // DEBUG: imprimir índice selecionada
+                setState(() {
+                  selectedIndex = value; // atualizar índice selecionado
+                });
               },
             ),
           ),
