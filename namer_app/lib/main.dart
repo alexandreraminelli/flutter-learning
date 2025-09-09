@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
       case 0:
         page = GeneratorPage(); // página de gerar nomes
       case 1:
-        page = Placeholder(); // página de favoritos (a implementar)
+        page = FavoritesPage(); // página de favoritos (a implementar)
       default:
         throw UnimplementedError("Nenhum widget para o índice $selectedIndex");
     }
@@ -205,6 +205,36 @@ class BigCard extends StatelessWidget {
               "${pair.first} ${pair.second}", // rótulo para leitores de tela
         ),
       ),
+    );
+  }
+}
+
+/// Página de nomes favoritos.
+class FavoritesPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+
+    // Se não houver favoritos
+    if (appState.favorites.isEmpty) {
+      return Center(child: Text("Nenhum nome salvo."));
+    }
+    // Lista de nomes
+    return ListView(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Text(
+            "Você tem ${appState.favorites.length} nomes salvos:",
+          ), // contagem de favoritos
+        ),
+        // Percorrer lista e gerar componentes
+        for (final pair in appState.favorites)
+          ListTile(
+            leading: Icon(Icons.favorite_rounded),
+            title: Text(pair.asPascalCase),
+          ),
+      ],
     );
   }
 }
