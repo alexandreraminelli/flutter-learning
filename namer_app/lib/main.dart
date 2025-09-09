@@ -79,43 +79,48 @@ class _MyHomePageState extends State<MyHomePage> {
         throw UnimplementedError("Nenhum widget para o índice $selectedIndex");
     }
 
-    return Scaffold(
-      body: Row(
-        children: [
-          // Barra de navegação lateral
-          SafeArea(
-            child: NavigationRail(
-              extended: false, // estendida: mostrar apenas ícones
-              destinations: [
-                NavigationRailDestination(
-                  // gerador
-                  icon: Icon(Icons.home_rounded),
-                  label: Text("Início"),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Scaffold(
+          body: Row(
+            children: [
+              // Barra de navegação lateral
+              SafeArea(
+                child: NavigationRail(
+                  extended:
+                      constraints.maxWidth >= 600, // se mostra apenas os ícones
+                  destinations: [
+                    NavigationRailDestination(
+                      // gerador
+                      icon: Icon(Icons.home_rounded),
+                      label: Text("Início"),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.favorite_rounded),
+                      label: Text("Favoritos"),
+                    ),
+                  ], // lista de itens de navegação
+                  selectedIndex: selectedIndex, // Página atual
+                  // Função chamada ao selecionar um item:
+                  onDestinationSelected: (value) {
+                    setState(() {
+                      selectedIndex = value; // atualizar índice selecionado
+                    });
+                  },
                 ),
-                NavigationRailDestination(
-                  icon: Icon(Icons.favorite_rounded),
-                  label: Text("Favoritos"),
+              ),
+              // Área principal
+              // Expanded: widget que expande para preencher espaço disponível
+              Expanded(
+                child: Container(
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  child: page, // exibir página selecionada
                 ),
-              ], // lista de itens de navegação
-              selectedIndex: selectedIndex, // Página atual
-              // Função chamada ao selecionar um item:
-              onDestinationSelected: (value) {
-                setState(() {
-                  selectedIndex = value; // atualizar índice selecionado
-                });
-              },
-            ),
+              ),
+            ],
           ),
-          // Área principal
-          // Expanded: widget que expande para preencher espaço disponível
-          Expanded(
-            child: Container(
-              color: Theme.of(context).colorScheme.primaryContainer,
-              child: page, // exibir página selecionada
-            ),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
