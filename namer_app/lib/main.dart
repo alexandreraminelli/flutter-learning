@@ -41,6 +41,19 @@ class MyAppState extends ChangeNotifier {
     current = WordPair.random();
     notifyListeners(); // notificar ouvintes sobre a mudança para atualizar UI
   }
+
+  /// Atributo com array de nomes favoritos
+  var favorites = <WordPair>[];
+
+  /// Método que adiciona ou remove um par de nomes dos favoritos
+  void toggleFavorite() {
+    if (favorites.contains(current)) {
+      favorites.remove(current);
+    } else {
+      favorites.add(current);
+    }
+    notifyListeners(); // atualizar UI
+  }
 }
 
 class MyHomePage extends StatelessWidget {
@@ -48,6 +61,14 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>(); // Acessar o estado da aplicação
     var pair = appState.current; // Par de palavras atual
+
+    /// Ícone do botão Favoritos
+    IconData icon;
+    if (appState.favorites.contains(pair)) {
+      icon = Icons.favorite;
+    } else {
+      icon = Icons.favorite_border;
+    }
 
     // Scaffold: estrutura básica de layout visual
     return Scaffold(
@@ -60,14 +81,29 @@ class MyHomePage extends StatelessWidget {
           children: [
             // exibir par de nomes gerado:
             BigCard(pair: pair),
-            // Botão
-            ElevatedButton(
-              onPressed: () {
-                // Função chamada ao pressionar o botão
-                appState.getNext(); // gerar novo nome
-              },
-              // Conteúdo do botão
-              child: Text("Próximo"),
+            // Botões das palavras
+            Row(
+              mainAxisSize: MainAxisSize.min, // size: fit-content
+              spacing: 14,
+              children: [
+                // Botão Favoritar
+                ElevatedButton.icon(
+                  onPressed: () {
+                    appState.toggleFavorite();
+                  },
+                  icon: Icon(icon),
+                  label: Text("Favorito"),
+                ),
+                // Botão Próximo
+                ElevatedButton(
+                  onPressed: () {
+                    // Função chamada ao pressionar o botão
+                    appState.getNext(); // gerar novo nome
+                  },
+                  // Conteúdo do botão
+                  child: Text("Próximo"),
+                ),
+              ],
             ),
           ],
         ),
