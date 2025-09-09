@@ -59,6 +59,50 @@ class MyAppState extends ChangeNotifier {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      body: Row(
+        children: [
+          // Barra de navegação lateral
+          SafeArea(
+            child: NavigationRail(
+              extended: false, // estendida: mostrar apenas ícones
+              destinations: [
+                NavigationRailDestination(
+                  // gerador
+                  icon: Icon(Icons.home_rounded),
+                  label: Text("Início"),
+                ),
+                NavigationRailDestination(
+                  icon: Icon(Icons.favorite_rounded),
+                  label: Text("Favoritos"),
+                ),
+              ], // lista de itens de navegação
+              selectedIndex: 0, // Página atual
+              onDestinationSelected: (value) {
+                print(
+                  "Selecionado: $value",
+                ); // DEBUG: imprimir índice selecionada
+              },
+            ),
+          ),
+          // Área principal
+          // Expanded: widget que expande para preencher espaço disponível
+          Expanded(
+            child: Container(
+              color: Theme.of(context).colorScheme.primaryContainer,
+              child: GeneratorPage(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Página de gerar nomes.
+class GeneratorPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>(); // Acessar o estado da aplicação
     var pair = appState.current; // Par de palavras atual
 
@@ -71,42 +115,39 @@ class MyHomePage extends StatelessWidget {
     }
 
     // Scaffold: estrutura básica de layout visual
-    return Scaffold(
-      // centralizar elementos no meio da tela
-      body: Center(
-        // layout em coluna
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          spacing: 8,
-          children: [
-            // exibir par de nomes gerado:
-            BigCard(pair: pair),
-            // Botões das palavras
-            Row(
-              mainAxisSize: MainAxisSize.min, // size: fit-content
-              spacing: 14,
-              children: [
-                // Botão Favoritar
-                ElevatedButton.icon(
-                  onPressed: () {
-                    appState.toggleFavorite();
-                  },
-                  icon: Icon(icon),
-                  label: Text("Favorito"),
-                ),
-                // Botão Próximo
-                ElevatedButton(
-                  onPressed: () {
-                    // Função chamada ao pressionar o botão
-                    appState.getNext(); // gerar novo nome
-                  },
-                  // Conteúdo do botão
-                  child: Text("Próximo"),
-                ),
-              ],
-            ),
-          ],
-        ),
+    return Center(
+      // layout em coluna
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        spacing: 8,
+        children: [
+          // exibir par de nomes gerado:
+          BigCard(pair: pair),
+          // Botões das palavras
+          Row(
+            mainAxisSize: MainAxisSize.min, // size: fit-content
+            spacing: 14,
+            children: [
+              // Botão Favoritar
+              ElevatedButton.icon(
+                onPressed: () {
+                  appState.toggleFavorite();
+                },
+                icon: Icon(icon),
+                label: Text("Favorito"),
+              ),
+              // Botão Próximo
+              ElevatedButton(
+                onPressed: () {
+                  // Função chamada ao pressionar o botão
+                  appState.getNext(); // gerar novo nome
+                },
+                // Conteúdo do botão
+                child: Text("Próximo"),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
