@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
             const TextField(
               decoration: InputDecoration(
                 filled: true,
-                labelText: 'Username',
+                labelText: 'Nome de usuário',
                 prefixIcon: Icon(Icons.person_rounded),
               ),
             ),
@@ -56,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                 obscureText: true, // ocultar texto
                 decoration: const InputDecoration(
                     filled: true,
-                    labelText: 'Password',
+                    labelText: 'Senha',
                     prefixIcon: Icon(Icons.key_rounded))),
             const SizedBox(height: 8), // espaçamento
             // Botões do form (em linha)
@@ -66,14 +66,14 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 // Botão Cancelar
                 TextButton(
-                  child: const Text("Cancel"),
+                  child: const Text("Cancelar"),
                   onPressed: () {
                     // TODO: Limpar os campos (101)
                   },
                 ),
                 // Botão Próximo
                 ElevatedButton(
-                  child: const Text("Next"),
+                  child: const Text("Próximo"),
                   onPressed: () {
                     // TODO: Avançar pra próxima etapa do login (101)
                   },
