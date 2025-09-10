@@ -79,7 +79,9 @@ class _LoginPageState extends State<LoginPage> {
                 TextButton(
                   child: const Text("Cancelar"),
                   onPressed: () {
-                    // TODO: Limpar os campos (101)
+                    /* Limpar os campos do form */
+                    _usernameController.clear();
+                    _passwordController.clear();
                   },
                 ),
                 // Botão Próximo
