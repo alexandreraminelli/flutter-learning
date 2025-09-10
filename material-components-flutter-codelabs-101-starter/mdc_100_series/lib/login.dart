@@ -22,7 +22,15 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // TODO: Add text editing controllers (101)
+  /* Controladores dos TextFields do formulário 
+   * _ no início -> visibilidade privada 
+  */
+  /// Controlador do field username.
+  final _usernameController = TextEditingController();
+
+  /// Controlador do field password.
+  final _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,21 +51,24 @@ class _LoginPageState extends State<LoginPage> {
             // TODO: Remove filled: true values (103)
 
             // Field de username
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              decoration: const InputDecoration(
                 filled: true,
                 labelText: 'Nome de usuário',
                 prefixIcon: Icon(Icons.person_rounded),
               ),
+              controller: _usernameController,
             ),
             const SizedBox(height: 12.0), // espaçamento
             // Field de password
-            const TextField(
-                obscureText: true, // ocultar texto
-                decoration: const InputDecoration(
-                    filled: true,
-                    labelText: 'Senha',
-                    prefixIcon: Icon(Icons.key_rounded))),
+            TextField(
+              obscureText: true, // ocultar texto
+              decoration: const InputDecoration(
+                  filled: true,
+                  labelText: 'Senha',
+                  prefixIcon: Icon(Icons.key_rounded)),
+              controller: _passwordController,
+            ),
             const SizedBox(height: 8), // espaçamento
             // Botões do form (em linha)
             OverflowBar(
