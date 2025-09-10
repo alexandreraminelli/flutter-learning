@@ -88,7 +88,8 @@ class _LoginPageState extends State<LoginPage> {
                 ElevatedButton(
                   child: const Text("Próximo"),
                   onPressed: () {
-                    // TODO: Avançar pra próxima etapa do login (101)
+                    /* Avançar para a página inicial. */
+                    Navigator.pop(context);
                   },
                 )
               ],

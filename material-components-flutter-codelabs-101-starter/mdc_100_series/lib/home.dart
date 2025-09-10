@@ -29,7 +29,8 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Text('You did it!'),
       ),
-      // TODO: Set resizeToAvoidBottomInset (101)
+      resizeToAvoidBottomInset:
+          false, // desabilita o redimensionamento (evita que o teclado não mude o tamanho da página inicial)
     );
   }
 }
