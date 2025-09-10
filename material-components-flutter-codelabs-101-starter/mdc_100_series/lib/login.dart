@@ -58,8 +58,28 @@ class _LoginPageState extends State<LoginPage> {
                     filled: true,
                     labelText: 'Password',
                     prefixIcon: Icon(Icons.key_rounded))),
-
-            // TODO: Add button bar (101)
+            const SizedBox(height: 8), // espaçamento
+            // Botões do form (em linha)
+            OverflowBar(
+              alignment: MainAxisAlignment.end, // alinhar à direita
+              spacing: 8,
+              children: <Widget>[
+                // Botão Cancelar
+                TextButton(
+                  child: const Text("Cancel"),
+                  onPressed: () {
+                    // TODO: Limpar os campos (101)
+                  },
+                ),
+                // Botão Próximo
+                ElevatedButton(
+                  child: const Text("Next"),
+                  onPressed: () {
+                    // TODO: Avançar pra próxima etapa do login (101)
+                  },
+                )
+              ],
+            )
           ],
         ),
       ),
