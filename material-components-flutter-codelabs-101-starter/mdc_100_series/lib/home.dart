@@ -13,43 +13,75 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
+import "package:intl/intl.dart"; // formatação de moeda
+
+import "model/product.dart"; // modelo de produto
+import "model/products_repository.dart"; // repositório de produtos
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   /// Função privada que retorna a lista de cards da página inicial.
-  List<Card> _buildGridCards(int count) {
-    List<Card> cards = List.generate(
-      count,
-      (int index) => Card(
-        /* Card de produto */
-        clipBehavior: Clip
-            .antiAlias, // recortar conteúdo que ultrapassa os limites do card
-        child: Column(
-          crossAxisAlignment:
-              CrossAxisAlignment.start, // alinhar texto ao start
-          children: <Widget>[
-            AspectRatio(
-                aspectRatio: 18.0 / 11.0, // proporção da imagem
-                child: Image.asset("assets/diamond.png")),
-            const Padding(
-              // espaçamento do texto
-              padding: EdgeInsets.fromLTRB(16, 12, 16, 8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 8,
-                // Título e texto secundário
-                children: <Widget>[
-                  Text("Title"),
-                  Text("Secondary Text"),
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-    return cards;
+  List<Card> _buildGridCards(BuildContext context) {
+    // Carregar os produtos de todas as categorias
+    List<Product> products = ProductsRepository.loadProducts(Category.all);
+
+    if (products.isEmpty) {
+      return const <Card>[]; // retornar lista vazia se não houver produtos
+    }
+
+    /// Tema atual
+    final ThemeData theme = Theme.of(context);
+
+    /// Formatação de moeda local
+    final NumberFormat formatter = NumberFormat.simpleCurrency(
+        locale: Localizations.localeOf(context).toString());
+
+    return products
+        .map(
+          (product) => Card(
+            /* Card de produto */
+            clipBehavior: Clip
+                .antiAlias, // recortar conteúdo que ultrapassa os limites do card
+            // TODO: Adjust card heights (103)
+            child: Column(
+              // TODO: Center items on the card (103)
+              crossAxisAlignment:
+                  CrossAxisAlignment.start, // alinhar texto ao start
+              children: <Widget>[
+                AspectRatio(
+                    aspectRatio: 18.0 / 11.0, // proporção da imagem
+                    child: Image.asset(
+                      product.assetName,
+                      package: product.assetPackage,
+                      // TODO: Adjust the box size (102)
+                    )),
+                Padding(
+                  // espaçamento do texto
+                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 8,
+                    children: <Widget>[
+                      // Nome do produto
+                      Text(
+                        product.name,
+                        style: theme.textTheme.titleLarge,
+                        maxLines: 1,
+                      ),
+                      // Preço
+                      Text(
+                        formatter.format(product.price),
+                        style: theme.textTheme.titleSmall,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        )
+        .toList();
   }
 
   // TODO: Add a variable for Category (104)
@@ -105,7 +137,7 @@ class HomePage extends StatelessWidget {
         crossAxisCount: 2, // número de colunas
         padding: const EdgeInsets.all(16),
         childAspectRatio: 8.0 / 9.0, // proporção dos cards
-        children: _buildGridCards(10), // lista de cards
+        children: _buildGridCards(context), // lista de cards
       ),
       resizeToAvoidBottomInset:
           false, // desabilita o redimensionamento (evita que o teclado não mude o tamanho da página inicial)
