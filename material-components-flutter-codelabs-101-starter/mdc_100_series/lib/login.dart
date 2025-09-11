@@ -95,6 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Theme.of(context).colorScheme.primary,
                       foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                      elevation: 8.0, // aumentar elevação (sombra)
                     ))
               ],
             )
