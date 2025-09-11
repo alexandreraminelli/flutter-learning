@@ -21,13 +21,27 @@ class HomePage extends StatelessWidget {
   // TODO: Add a variable for Category (104)
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     // TODO: Return an AsymmetricView (104)
     // TODO: Pass Category variable to AsymmetricView (104)
     return Scaffold(
       // Cabeçalho
       appBar: AppBar(
+        // Cores
+        backgroundColor: theme.colorScheme.primary,
+        foregroundColor: theme.colorScheme.onPrimary,
         title: const Text("SHRINE"),
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        // Botão de menu
+        leading: IconButton(
+          icon: const Icon(
+            Icons.menu,
+            semanticLabel: "menu",
+          ),
+          onPressed: () {
+            print("Menu Button");
+          },
+        ),
       ),
       // TODO: Add a grid view (102)
       body: const Center(
