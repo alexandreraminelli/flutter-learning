@@ -14,9 +14,10 @@
 
 import 'package:flutter/material.dart';
 
+import "colors.dart";
 import 'home.dart';
 import 'login.dart';
-import "colors.dart";
+import "supplemental/cut_corners_border.dart";
 
 // TODO: Convert ShrineApp to stateful widget (104)
 class ShrineApp extends StatelessWidget {
@@ -45,7 +46,7 @@ class ShrineApp extends StatelessWidget {
 ///
 final ThemeData _kShrineTheme = _buildShrineTheme();
 
-///
+/// Construtor do tema do Shrine.
 ThemeData _buildShrineTheme() {
   // copiar tema claro já integrado no Flutter
   final ThemeData base = ThemeData.light();
@@ -66,7 +67,7 @@ ThemeData _buildShrineTheme() {
       // TODO: Add the icon themes (103)
       // Estilo do input
       inputDecorationTheme: const InputDecorationTheme(
-        border: OutlineInputBorder(),
+        border: CutCornersBorder(), // bordas octogonais
         // Ajustar cores de foco (primária tem baixo contraste)
         focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
