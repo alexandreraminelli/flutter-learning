@@ -82,9 +82,12 @@ class _LoginPageState extends State<LoginPage> {
                       _passwordController.clear();
                     },
                     style: TextButton.styleFrom(
-                      // usar cor secundária para aumentar contraste
-                      foregroundColor: Theme.of(context).colorScheme.secondary,
-                    )),
+                        // usar cor secundária para aumentar contraste
+                        foregroundColor:
+                            Theme.of(context).colorScheme.secondary,
+                        shape: const BeveledRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(7.0))))),
                 // Botão Próximo
                 ElevatedButton(
                     child: const Text("Próximo"),
@@ -93,10 +96,13 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.pop(context);
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Theme.of(context).colorScheme.primary,
-                      foregroundColor: Theme.of(context).colorScheme.onPrimary,
-                      elevation: 8.0, // aumentar elevação (sombra)
-                    ))
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        foregroundColor:
+                            Theme.of(context).colorScheme.onPrimary,
+                        elevation: 8.0, // aumentar elevação (sombra)
+                        shape: const BeveledRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(7.0)))))
               ],
             )
           ],
