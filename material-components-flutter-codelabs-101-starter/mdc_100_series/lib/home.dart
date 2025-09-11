@@ -72,7 +72,7 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         childAspectRatio: 8.0 / 9.0, // proporção dos cards
         // TODO: bUILD A GRID OF CARDS (102)
-        children: const <Widget>[
+        children: <Widget>[
           // Cards dos produtos
           Card(
             clipBehavior: Clip
@@ -82,8 +82,8 @@ class HomePage extends StatelessWidget {
                   CrossAxisAlignment.start, // alinhar texto ao start
               children: <Widget>[
                 AspectRatio(
-                  aspectRatio: 18.0 / 11.0, // proporção da imagem
-                ),
+                    aspectRatio: 18.0 / 11.0, // proporção da imagem
+                    child: Image.asset("assets/diamond.png")),
                 Padding(
                   // espaçamento do texto
                   padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
