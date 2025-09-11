@@ -65,9 +65,22 @@ class HomePage extends StatelessWidget {
               },
             ),
           ]),
-      // TODO: Add a grid view (102)
-      body: const Center(
-        child: Text('You did it!'),
+
+      // Conteúdo principal: grade de produtos
+      body: GridView.count(
+        crossAxisCount: 2, // número de colunas
+        padding: const EdgeInsets.all(16),
+        childAspectRatio: 8.0 / 9.0, // proporção dos cards
+        // TODO: bUILD A GRID OF CARDS (102)
+        children: <Widget>[
+          // Cards dos produtos
+          Card(),
+          Card(),
+          Card(),
+          Card(),
+          Card(),
+          Card(),
+        ],
       ),
       resizeToAvoidBottomInset:
           false, // desabilita o redimensionamento (evita que o teclado não mude o tamanho da página inicial)
