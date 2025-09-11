@@ -44,6 +44,7 @@ class HomePage extends StatelessWidget {
             clipBehavior: Clip
                 .antiAlias, // recortar conteúdo que ultrapassa os limites do card
             // TODO: Adjust card heights (103)
+            elevation: 0.0, // remover sombra do card
             child: Column(
               // TODO: Center items on the card (103)
               crossAxisAlignment:
