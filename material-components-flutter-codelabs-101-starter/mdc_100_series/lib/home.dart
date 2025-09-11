@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
           // Botão de menu
           leading: IconButton(
             icon: const Icon(
-              Icons.menu,
+              Icons.menu_rounded,
               semanticLabel: "menu",
             ),
             onPressed: () {
@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
             // Botão de pesquisa
             IconButton(
               icon: const Icon(
-                Icons.search,
+                Icons.search_rounded,
                 semanticLabel: "busca",
               ),
               onPressed: () {
@@ -57,7 +57,7 @@ class HomePage extends StatelessWidget {
             // Botão de filtro
             IconButton(
               icon: const Icon(
-                Icons.tune,
+                Icons.tune_rounded,
                 semanticLabel: "filtro",
               ),
               onPressed: () {
