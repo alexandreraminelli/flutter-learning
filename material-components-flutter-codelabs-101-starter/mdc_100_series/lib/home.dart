@@ -17,76 +17,10 @@ import "package:intl/intl.dart"; // formatação de moeda
 
 import "model/product.dart"; // modelo de produto
 import "model/products_repository.dart"; // repositório de produtos
+import "supplemental/asymmetric_view.dart"; // grade assimétrica
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
-
-  /// Função privada que retorna a lista de cards da página inicial.
-  List<Card> _buildGridCards(BuildContext context) {
-    // Carregar os produtos de todas as categorias
-    List<Product> products = ProductsRepository.loadProducts(Category.all);
-
-    if (products.isEmpty) {
-      return const <Card>[]; // retornar lista vazia se não houver produtos
-    }
-
-    /// Tema atual
-    final ThemeData theme = Theme.of(context);
-
-    /// Formatação de moeda local
-    final NumberFormat formatter = NumberFormat.simpleCurrency(
-        locale: Localizations.localeOf(context).toString());
-
-    return products
-        .map(
-          (product) => Card(
-            /* Card de produto */
-            clipBehavior: Clip
-                .antiAlias, // recortar conteúdo que ultrapassa os limites do card
-            // TODO: Adjust card heights (103)
-            elevation: 0.0, // remover sombra do card
-            child: Column(
-              // TODO: Center items on the card (103)
-              crossAxisAlignment:
-                  CrossAxisAlignment.start, // alinhar texto ao start
-              children: <Widget>[
-                AspectRatio(
-                    aspectRatio: 18.0 / 11.0, // proporção da imagem
-                    child: Image.asset(
-                      product.assetName, // caminho da imagem
-                      package: product.assetPackage, // pacote da imagem
-                      fit: BoxFit.fitWidth, // ajustar largura da imagem
-                    )),
-                Padding(
-                  // espaçamento do texto
-                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    spacing: 8,
-                    children: <Widget>[
-                      // Nome do produto
-                      Text(
-                        product.name,
-                        style: theme.textTheme.labelLarge,
-                        softWrap: false, // não quebrar linha
-                        overflow: TextOverflow.ellipsis, // ellipsis se vazar
-                        maxLines: 1,
-                      ),
-                      // Preço
-                      Text(
-                        formatter.format(product.price),
-                        style: theme.textTheme.titleSmall,
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        )
-        .toList();
-  }
 
   // TODO: Add a variable for Category (104)
   @override
@@ -137,12 +71,8 @@ class HomePage extends StatelessWidget {
           ]),
 
       // Conteúdo principal: grade de produtos
-      body: GridView.count(
-        crossAxisCount: 2, // número de colunas
-        padding: const EdgeInsets.all(16),
-        childAspectRatio: 8.0 / 9.0, // proporção dos cards
-        children: _buildGridCards(context), // lista de cards
-      ),
+      body: AsymmetricView(
+          products: ProductsRepository.loadProducts(Category.all)),
       resizeToAvoidBottomInset:
           false, // desabilita o redimensionamento (evita que o teclado não mude o tamanho da página inicial)
     );
