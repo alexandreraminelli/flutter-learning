@@ -52,9 +52,9 @@ class HomePage extends StatelessWidget {
                 AspectRatio(
                     aspectRatio: 18.0 / 11.0, // proporção da imagem
                     child: Image.asset(
-                      product.assetName,
-                      package: product.assetPackage,
-                      // TODO: Adjust the box size (102)
+                      product.assetName, // caminho da imagem
+                      package: product.assetPackage, // pacote da imagem
+                      fit: BoxFit.fitWidth, // ajustar largura da imagem
                     )),
                 Padding(
                   // espaçamento do texto
