@@ -72,14 +72,34 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         childAspectRatio: 8.0 / 9.0, // proporção dos cards
         // TODO: bUILD A GRID OF CARDS (102)
-        children: <Widget>[
+        children: const <Widget>[
           // Cards dos produtos
-          Card(),
-          Card(),
-          Card(),
-          Card(),
-          Card(),
-          Card(),
+          Card(
+            clipBehavior: Clip
+                .antiAlias, // recortar conteúdo que ultrapassa os limites do card
+            child: Column(
+              crossAxisAlignment:
+                  CrossAxisAlignment.start, // alinhar texto ao start
+              children: <Widget>[
+                AspectRatio(
+                  aspectRatio: 18.0 / 11.0, // proporção da imagem
+                ),
+                Padding(
+                  // espaçamento do texto
+                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 8,
+                    // Título e texto secundário
+                    children: <Widget>[
+                      Text("Title"),
+                      Text("Secondary Text"),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          )
         ],
       ),
       resizeToAvoidBottomInset:
