@@ -75,21 +75,27 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 // Botão Cancelar
                 TextButton(
-                  child: const Text("Cancelar"),
-                  onPressed: () {
-                    /* Limpar os campos do form */
-                    _usernameController.clear();
-                    _passwordController.clear();
-                  },
-                ),
+                    child: const Text("Cancelar"),
+                    onPressed: () {
+                      /* Limpar os campos do form */
+                      _usernameController.clear();
+                      _passwordController.clear();
+                    },
+                    style: TextButton.styleFrom(
+                      // usar cor secundária para aumentar contraste
+                      foregroundColor: Theme.of(context).colorScheme.secondary,
+                    )),
                 // Botão Próximo
-                FilledButton(
-                  child: const Text("Próximo"),
-                  onPressed: () {
-                    /* Avançar para a página inicial. */
-                    Navigator.pop(context);
-                  },
-                )
+                ElevatedButton(
+                    child: const Text("Próximo"),
+                    onPressed: () {
+                      /* Avançar para a página inicial. */
+                      Navigator.pop(context);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                    ))
               ],
             )
           ],
