@@ -60,7 +60,8 @@ class HomePage extends StatelessWidget {
                   // espaçamento do texto
                   padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     spacing: 8,
                     children: <Widget>[
                       // Nome do produto
