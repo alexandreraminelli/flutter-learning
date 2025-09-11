@@ -85,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                   },
                 ),
                 // Botão Próximo
-                ElevatedButton(
+                FilledButton(
                   child: const Text("Próximo"),
                   onPressed: () {
                     /* Avançar para a página inicial. */
