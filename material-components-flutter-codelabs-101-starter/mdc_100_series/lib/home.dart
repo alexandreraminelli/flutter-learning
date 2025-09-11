@@ -66,7 +66,9 @@ class HomePage extends StatelessWidget {
                       // Nome do produto
                       Text(
                         product.name,
-                        style: theme.textTheme.titleLarge,
+                        style: theme.textTheme.labelLarge,
+                        softWrap: false, // não quebrar linha
+                        overflow: TextOverflow.ellipsis, // ellipsis se vazar
                         maxLines: 1,
                       ),
                       // Preço
