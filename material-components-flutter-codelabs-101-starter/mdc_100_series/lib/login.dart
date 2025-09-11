@@ -44,7 +44,10 @@ class _LoginPageState extends State<LoginPage> {
                 // Logo
                 Image.asset('assets/diamond.png'),
                 const SizedBox(height: 16.0),
-                const Text('SHRINE'),
+                Text(
+                  'SHRINE',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
               ],
             ),
             const SizedBox(height: 120.0), // espaçamento
