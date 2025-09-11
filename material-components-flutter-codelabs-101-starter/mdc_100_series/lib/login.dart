@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 16.0),
                 Text(
                   'SHRINE',
-                  style: Theme.of(context).textTheme.headlineMedium,
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ],
             ),

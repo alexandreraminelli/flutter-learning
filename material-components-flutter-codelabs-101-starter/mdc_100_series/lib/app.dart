@@ -50,16 +50,42 @@ ThemeData _buildShrineTheme() {
   // copiar tema claro já integrado no Flutter
   final ThemeData base = ThemeData.light();
   return base.copyWith(
+    // Cores
     colorScheme: base.colorScheme.copyWith(
         // add cores da marca
         primary: kShrinePink100,
         onPrimary: kShrineBrown900,
         secondary: kShrineBrown900,
         error: kShrineErrorRed),
+    // Tipografia
+    textTheme: _buildShrineTextTheme(base.textTheme),
+    textSelectionTheme: const TextSelectionThemeData(
+      selectionColor: kShrinePink100,
+    ),
+
+    // TODO: Add the icon themes (103)
+    // TODO: Decorate the inputs (103)
   );
-  // TODO: Add the text themes (103)
-  // TODO: Add the icon themes (103)
-  // TODO: Decorate the inputs (103)
 }
 
-// TODO: Build a Shrine Text Theme (103)
+/// Tipografia do tema Shrine.
+TextTheme _buildShrineTextTheme(TextTheme base) {
+  return base
+      .copyWith(
+          // Títulos
+          headlineSmall:
+              base.headlineSmall!.copyWith(fontWeight: FontWeight.w500),
+          headlineMedium: base.headlineMedium!.copyWith(fontSize: 18),
+          // Texto de corpo
+          bodySmall: base.bodySmall!
+              .copyWith(fontWeight: FontWeight.w400, fontSize: 14),
+          bodyMedium: base.bodyMedium!.copyWith(
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+          ))
+      .apply(
+        fontFamily: "Rubik",
+        displayColor: kShrineBrown900,
+        bodyColor: kShrineBrown900,
+      );
+}
