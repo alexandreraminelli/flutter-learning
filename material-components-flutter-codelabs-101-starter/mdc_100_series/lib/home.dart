@@ -28,21 +28,43 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       // Cabeçalho
       appBar: AppBar(
-        // Cores
-        backgroundColor: theme.colorScheme.primary,
-        foregroundColor: theme.colorScheme.onPrimary,
-        title: const Text("SHRINE"),
-        // Botão de menu
-        leading: IconButton(
-          icon: const Icon(
-            Icons.menu,
-            semanticLabel: "menu",
+          // Cores
+          backgroundColor: theme.colorScheme.primary,
+          foregroundColor: theme.colorScheme.onPrimary,
+          title: const Text("SHRINE"),
+          // Botão de menu
+          leading: IconButton(
+            icon: const Icon(
+              Icons.menu,
+              semanticLabel: "menu",
+            ),
+            onPressed: () {
+              print("Menu Button");
+            },
           ),
-          onPressed: () {
-            print("Menu Button");
-          },
-        ),
-      ),
+          // Botões de ação
+          actions: <Widget>[
+            // Botão de pesquisa
+            IconButton(
+              icon: const Icon(
+                Icons.search,
+                semanticLabel: "busca",
+              ),
+              onPressed: () {
+                print("Search button");
+              },
+            ),
+            // Botão de filtro
+            IconButton(
+              icon: const Icon(
+                Icons.tune,
+                semanticLabel: "filtro",
+              ),
+              onPressed: () {
+                print("Filter button");
+              },
+            ),
+          ]),
       // TODO: Add a grid view (102)
       body: const Center(
         child: Text('You did it!'),
