@@ -51,12 +51,9 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
             const SizedBox(height: 120.0), // espaçamento
-            // TODO: Remove filled: true values (103)
-
             // Field de username
             TextField(
               decoration: const InputDecoration(
-                filled: true,
                 labelText: 'Nome de usuário',
                 prefixIcon: Icon(Icons.person_rounded),
               ),
@@ -67,9 +64,7 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               obscureText: true, // ocultar texto
               decoration: const InputDecoration(
-                  filled: true,
-                  labelText: 'Senha',
-                  prefixIcon: Icon(Icons.key_rounded)),
+                  labelText: 'Senha', prefixIcon: Icon(Icons.key_rounded)),
               controller: _passwordController,
             ),
             const SizedBox(height: 8), // espaçamento
