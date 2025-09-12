@@ -12,6 +12,8 @@ import '../../../utils/adaptive_components.dart';
 import '../../playlists/view/playlist_songs.dart';
 import 'view.dart';
 
+/// Widget da Tela Inicial.
+/// Mostra playlists, artistas e músicas.
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -19,7 +21,9 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+/// Estado da Tela Inicial.
 class _HomeScreenState extends State<HomeScreen> {
+  /// Método que cria a raiz da árvore de widgets.
   @override
   Widget build(BuildContext context) {
     final PlaylistsProvider playlistProvider = PlaylistsProvider();
