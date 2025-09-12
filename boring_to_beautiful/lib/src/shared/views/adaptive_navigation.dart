@@ -4,6 +4,8 @@
 
 import 'package:flutter/material.dart';
 
+/// Widget de navegação responsiva.
+/// Mostra NavigationRail em telas grandes e NavigationBar em telas pequenas.
 class AdaptiveNavigation extends StatelessWidget {
   const AdaptiveNavigation({
     super.key,
@@ -22,27 +24,40 @@ class AdaptiveNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, dimens) {
-        return Scaffold(
-          body: Row(
-            children: [
-              NavigationRail(
-                extended: dimens.maxWidth >= 800,
-                minExtendedWidth: 180,
-                destinations: destinations
-                    .map(
-                      (e) => NavigationRailDestination(
-                        icon: e.icon,
-                        label: Text(e.label),
-                      ),
-                    )
-                    .toList(),
-                selectedIndex: selectedIndex,
-                onDestinationSelected: onDestinationSelected,
-              ),
-              Expanded(child: child),
-            ],
-          ),
-        );
+        // Tablet Layout
+        if (dimens.maxWidth >= 600) {
+          return Scaffold(
+            body: Row(
+              children: [
+                NavigationRail(
+                  extended: dimens.maxWidth >= 800, // expandir em telas grandes
+                  minExtendedWidth: 180,
+                  destinations: destinations
+                      .map(
+                        (e) => NavigationRailDestination(
+                          icon: e.icon,
+                          label: Text(e.label),
+                        ),
+                      )
+                      .toList(),
+                  selectedIndex: selectedIndex,
+                  onDestinationSelected: onDestinationSelected,
+                ),
+                Expanded(child: child),
+              ],
+            ),
+          );
+        } else {
+          // Mobile layout
+          return Scaffold(
+            body: child,
+            bottomNavigationBar: NavigationBar(
+              destinations: destinations,
+              selectedIndex: selectedIndex,
+              onDestinationSelected: onDestinationSelected,
+            ),
+          );
+        }
       },
     );
   }
