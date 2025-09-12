@@ -34,6 +34,60 @@ class _HomeScreenState extends State<HomeScreen> {
     final List<Artist> artists = artistsProvider.artists;
     return LayoutBuilder(
       builder: (context, constraints) {
+        // Tela inicial para mobile (divide o conteúdo por tabs)
+        if (constraints.isMobile) {
+          return DefaultTabController(
+            length: 4,
+            child: Scaffold(
+              // Barra superior
+              appBar: AppBar(
+                centerTitle: false,
+                title: const Text("Good Morning"),
+                actions: const [BrightnessToggle()], // botão de tema
+                // barra de abas
+                bottom: const TabBar(
+                  isScrollable: true,
+                  tabs: [
+                    Tab(text: "Home"),
+                    Tab(text: "Recently Played"),
+                    Tab(text: "New Releases"),
+                    Tab(text: "Top Songs"),
+                  ],
+                ),
+              ),
+              // Conteúdo
+              body: LayoutBuilder(
+                // Páginas por abas
+                builder: (context, constraints) => TabBarView(
+                  children: [
+                    // aba "Home"
+                    SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          const HomeHighlight(),
+                          HomeArtists(
+                            artists: artists,
+                            constraints: constraints,
+                          ),
+                        ],
+                      ),
+                    ),
+                    // aba "Recently Played"
+                    HomeRecent(playlists: playlists, axis: Axis.vertical),
+                    // aba "New Releases"
+                    PlaylistSongs(playlist: topSongs, constraints: constraints),
+                    // aba "Top Songs"
+                    PlaylistSongs(
+                      playlist: newReleases,
+                      constraints: constraints,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        }
+        // Tela inicial para tablet e desktop (conteúdo em colunas)
         return Scaffold(
           body: SingleChildScrollView(
             child: AdaptiveColumn(
