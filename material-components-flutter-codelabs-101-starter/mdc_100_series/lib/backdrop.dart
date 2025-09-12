@@ -89,26 +89,51 @@ class _BackdropState extends State<Backdrop>
   }
 
   // TODO: Add functions to get and change front layer visibility (104)
-  /// Verifica se a camada da frente está visível
+  /// Verifica se a camada da frente está visível.
   bool get _frontLayerVisible {
     final AnimationStatus status = _controller.status;
     return status == AnimationStatus.completed ||
         status == AnimationStatus.forward;
   }
 
+  /// Alterna a visibilidade da camada da frente.
+  void _toggleBackdropLayerVisibility() {
+    _controller.fling(
+        velocity: _frontLayerVisible ? -_kFlingVelocity : _kFlingVelocity);
+  }
+
   // TODO: Add BuildContext and BoxConstraints parameters to _buildStack (104)
   /// Constrói o layout em pilha (stack).
-  Widget _buildStack() {
+  Widget _buildStack(
+    BuildContext context,
+    BoxConstraints constraints,
+  ) {
+    const double layerTitleHeight = 48;
+    final Size layerSize = constraints.biggest;
+    final double layerTop = layerSize.height - layerTitleHeight;
+
     // TODO: Create a RelativeRectTween Animation (104)
+    Animation<RelativeRect> layerAnimation = RelativeRectTween(
+      begin: RelativeRect.fromLTRB(0, layerTop, 0, layerTop - layerSize.height),
+      end: const RelativeRect.fromLTRB(0, 0, 0, 0),
+    ).animate(_controller.view);
 
     return Stack(
       key: _backdropKey,
       children: <Widget>[
         // TODO: Wrap backLayer in an ExcludeSemantics widget (104)
-        widget.backLayer, // conteúdo do fundo
+        ExcludeSemantics(
+          child: widget.backLayer,
+          excluding: _frontLayerVisible,
+        ),
         // TODO: Add a PositionedTransition (104)
+        PositionedTransition(
+            rect: layerAnimation,
+            child: _FrontLayer(
+              // TODO: Implement onTap property on _BackdropState (104)
+              child: widget.frontLayer,
+            ))
         // TODO: Wrap front layer in _FrontLayer (104)
-        _FrontLayer(child: widget.frontLayer), // conteúdo da frente
       ],
     );
   }
@@ -120,9 +145,12 @@ class _BackdropState extends State<Backdrop>
       titleSpacing: 0.0,
       backgroundColor: kShrinePink100,
       // TODO: Replace leading menu icon with IconButton (104)
+      leading: IconButton(
+        icon: const Icon(Icons.menu_rounded),
+        onPressed: _toggleBackdropLayerVisibility,
+      ),
       // TODO: Remove leading property (104)
       // TODO: Create title with _BackdropTitle parameter (104)
-      leading: Icon(Icons.menu_rounded),
       title: Text("SHRINE"),
       actions: <Widget>[
         // TODO: Add shortcut to login screen from trailing icons (104)
@@ -152,7 +180,7 @@ class _BackdropState extends State<Backdrop>
     return Scaffold(
       appBar: appBar,
       // TODO: Return a LayoutBuilder widget (104)
-      body: _buildStack(),
+      body: LayoutBuilder(builder: _buildStack),
     );
   }
 }
