@@ -150,6 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(35),
                     child: Row(
+                      spacing: 35,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Flexible(
