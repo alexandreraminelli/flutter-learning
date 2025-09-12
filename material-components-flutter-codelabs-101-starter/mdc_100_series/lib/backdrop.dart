@@ -4,6 +4,7 @@ import "package:shrine/colors.dart";
 import "model/product.dart";
 
 // TODO: Add velocity constant (104)
+const double _kFlingVelocity = 2.0;
 
 /// Widget com estado que implementa o layout de fundo (backdrop).
 class Backdrop extends StatefulWidget {
@@ -69,6 +70,31 @@ class _BackdropState extends State<Backdrop>
   final GlobalKey _backdropKey = GlobalKey(debugLabel: "Backdrop");
 
   // TODO: Add AnimationController widget (104)
+  late AnimationController _controller;
+
+  /// Método chamado quando o estado é criado (antes do widget fazer parte da árvore de renderização).
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+        duration: const Duration(milliseconds: 300), value: 1.0, vsync: this);
+  }
+
+  // TODO: Add override for didUpdateWidget (104)
+  /// Método chamado quando o estado é destruído (quando o widget é removido da árvore).
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  // TODO: Add functions to get and change front layer visibility (104)
+  /// Verifica se a camada da frente está visível
+  bool get _frontLayerVisible {
+    final AnimationStatus status = _controller.status;
+    return status == AnimationStatus.completed ||
+        status == AnimationStatus.forward;
+  }
 
   // TODO: Add BuildContext and BoxConstraints parameters to _buildStack (104)
   /// Constrói o layout em pilha (stack).
