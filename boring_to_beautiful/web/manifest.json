@@ -1,6 +1,6 @@
 {
-    "name": "boring_to_beautiful",
-    "short_name": "boring_to_beautiful",
+    "name": "myartist",
+    "short_name": "myartist",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

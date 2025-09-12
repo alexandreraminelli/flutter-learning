@@ -1,4 +1,4 @@
-package com.example.boring_to_beautiful
+package com.example.myartist
 
 import io.flutter.embedding.android.FlutterActivity
 
