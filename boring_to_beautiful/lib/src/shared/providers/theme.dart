@@ -40,9 +40,10 @@ class ThemeProvider extends InheritedWidget {
   final ColorScheme? lightDynamic;
   final ColorScheme? darkDynamic;
 
+  /// Animações de transição de página personalizadas para diferentes plataformas.
   final pageTransitionsTheme = const PageTransitionsTheme(
     builders: <TargetPlatform, PageTransitionsBuilder>{
-      TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+      TargetPlatform.android: FadeForwardsPageTransitionsBuilder(),
       TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
       TargetPlatform.linux: NoAnimationPageTransitionsBuilder(),
       TargetPlatform.macOS: NoAnimationPageTransitionsBuilder(),
@@ -144,9 +145,11 @@ class ThemeProvider extends InheritedWidget {
     return DrawerThemeData(backgroundColor: colors.surface);
   }
 
+  /// Tema claro da aplicação.
   ThemeData light([Color? targetColor]) {
     final colorScheme = colors(Brightness.light, targetColor);
     return ThemeData.light().copyWith(
+      pageTransitionsTheme: pageTransitionsTheme, // aplicar transições
       colorScheme: colorScheme,
       appBarTheme: appBarTheme(colorScheme),
       cardTheme: cardTheme(),
@@ -160,9 +163,11 @@ class ThemeProvider extends InheritedWidget {
     );
   }
 
+  /// Tema escuro da aplicação.
   ThemeData dark([Color? targetColor]) {
     final colorScheme = colors(Brightness.dark, targetColor);
     return ThemeData.dark().copyWith(
+      pageTransitionsTheme: pageTransitionsTheme, // aplicar transições
       colorScheme: colorScheme,
       appBarTheme: appBarTheme(colorScheme),
       cardTheme: cardTheme(),
