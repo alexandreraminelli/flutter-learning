@@ -28,6 +28,9 @@ class HomePage extends StatelessWidget {
     final theme = Theme.of(context);
 
     // TODO: Return an AsymmetricView (104)
+    return AsymmetricView(
+        products: ProductsRepository.loadProducts(Category.all));
+
     // TODO: Pass Category variable to AsymmetricView (104)
     return Scaffold(
       // Cabeçalho
