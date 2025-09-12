@@ -3,10 +3,12 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import "package:google_fonts/google_fonts.dart"; // importar pacote de fontes
 
 extension TypographyUtils on BuildContext {
   ThemeData get theme => Theme.of(this);
-  TextTheme get textTheme => theme.textTheme;
+  TextTheme get textTheme => // Aplicar fonte Montserrat
+      GoogleFonts.montserratTextTheme(theme.textTheme);
   ColorScheme get colors => theme.colorScheme;
   TextStyle? get displayLarge =>
       textTheme.displayLarge?.copyWith(color: colors.onSurface);
