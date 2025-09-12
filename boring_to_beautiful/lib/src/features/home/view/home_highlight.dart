@@ -7,6 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../shared/views/views.dart';
 
+/// Destaques na página inicial.
 class HomeHighlight extends StatelessWidget {
   const HomeHighlight({super.key});
 
@@ -16,7 +17,7 @@ class HomeHighlight extends StatelessWidget {
       children: [
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(2),
+            padding: const EdgeInsets.all(35),
             child: Clickable(
               child: SizedBox(
                 height: 275,
@@ -28,7 +29,7 @@ class HomeHighlight extends StatelessWidget {
                   ),
                 ),
               ),
-              onTap: () => launchUrl(Uri.parse('https://docs.flutter.dev')),
+              onTap: () {},
             ),
           ),
         ),
