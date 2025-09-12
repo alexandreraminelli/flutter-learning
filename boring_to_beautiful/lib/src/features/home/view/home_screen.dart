@@ -92,10 +92,11 @@ class _HomeScreenState extends State<HomeScreen> {
           body: SingleChildScrollView(
             child: AdaptiveColumn(
               children: [
+                // Header
                 AdaptiveContainer(
                   columnSpan: 12,
                   child: Padding(
-                    padding: const EdgeInsets.all(2),
+                    padding: const EdgeInsets.all(25),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -111,6 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
+                // Destaques e artistas
                 AdaptiveContainer(
                   columnSpan: 12,
                   child: Column(
@@ -125,13 +127,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
+                // Recentemente reproduzidas
                 AdaptiveContainer(
                   columnSpan: 12,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(2),
+                        padding: const EdgeInsets.all(35),
                         child: Text(
                           'Recently played',
                           style: context.headlineSmall,
@@ -141,10 +144,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
+                // Top Songs e New Releases
                 AdaptiveContainer(
                   columnSpan: 12,
                   child: Padding(
-                    padding: const EdgeInsets.all(2),
+                    padding: const EdgeInsets.all(35),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -155,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.all(2),
+                                padding: const EdgeInsets.all(35),
                                 child: Text(
                                   'Top Songs Today',
                                   style: context.titleLarge,
@@ -171,6 +175,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                         ),
+                        // Espaçamento entre tabelas
                         Flexible(
                           flex: 10,
                           child: Column(
@@ -178,7 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.all(2),
+                                padding: const EdgeInsets.all(35),
                                 child: Text(
                                   'New Releases',
                                   style: context.titleLarge,
