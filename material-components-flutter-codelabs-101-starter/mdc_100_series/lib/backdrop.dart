@@ -73,12 +73,16 @@ class _BackdropState extends State<Backdrop>
   // TODO: Add BuildContext and BoxConstraints parameters to _buildStack (104)
   /// Constrói o layout em pilha (stack).
   Widget _buildStack() {
+    // TODO: Create a RelativeRectTween Animation (104)
+
     return Stack(
       key: _backdropKey,
       children: <Widget>[
         // TODO: Wrap backLayer in an ExcludeSemantics widget (104)
         widget.backLayer, // conteúdo do fundo
-        widget.frontLayer, // conteúdo da frente
+        // TODO: Add a PositionedTransition (104)
+        // TODO: Wrap front layer in _FrontLayer (104)
+        _FrontLayer(child: widget.frontLayer), // conteúdo da frente
       ],
     );
   }
