@@ -19,20 +19,25 @@ const _scaffoldKey = ValueKey('_scaffoldKey');
 final artistsProvider = ArtistsProvider();
 final playlistsProvider = PlaylistsProvider();
 
+/// Lista de destinos de navegação exibido na barra de navegação.
+/// Contém o rótulo, ícone e rota.
 const List<NavigationDestination> destinations = [
   NavigationDestination(
+    // Página inicial
     label: 'Home',
-    icon: Icon(Icons.arrow_right_rounded),
+    icon: Icon(Icons.home_rounded),
     route: '/',
   ),
   NavigationDestination(
+    // Página de playlists
     label: 'Playlists',
-    icon: Icon(Icons.arrow_right_rounded),
+    icon: Icon(Icons.playlist_add_check_rounded),
     route: '/playlists',
   ),
   NavigationDestination(
+    // Página de artistas
     label: 'Artists',
-    icon: Icon(Icons.arrow_right_rounded),
+    icon: Icon(Icons.people_rounded),
     route: '/artists',
   ),
 ];
