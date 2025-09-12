@@ -32,9 +32,38 @@ class Backdrop extends StatefulWidget {
 }
 
 // TODO: Add _FrontLayer class (104)
+/// Widget que representa a camada da frente (front layer).
+class _FrontLayer extends StatelessWidget {
+  // TODO: Add on-tap callback (104)
+  const _FrontLayer({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      elevation: 16,
+      shape: const BeveledRectangleBorder(
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(46)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          // TODO: Add a GestureDetector (104)
+          Expanded(child: child)
+        ],
+      ),
+    );
+  }
+}
+
 // TODO: Add _BackdropTitle class (104)
 
 // TODO: Add _BackdropState class (104)
+/// Classe de estado do widget Backdrop
 class _BackdropState extends State<Backdrop>
     with SingleTickerProviderStateMixin {
   final GlobalKey _backdropKey = GlobalKey(debugLabel: "Backdrop");
