@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:lucide_icons/lucide_icons.dart";
 
 /// Página inicial do app
 class HomePage extends StatelessWidget {
@@ -22,6 +23,16 @@ class HomePage extends StatelessWidget {
           ),
         ),
         centerTitle: true,
+        // Botão de voltar
+        leading: Container(
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            // quadrado com background ao redor (parecer um botão)
+            color: Color(0xffF7F8F8),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Icon(LucideIcons.chevronLeft),
+        ),
       ),
     );
   }
