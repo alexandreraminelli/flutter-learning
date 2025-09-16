@@ -9,6 +9,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // Layout Scaffold
     return Scaffold(
+      // Aparência
+      backgroundColor: Colors.white,
+      // Conteúdo
       appBar: appBar(),
       body: Column(
         children: [
