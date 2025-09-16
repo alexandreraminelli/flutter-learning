@@ -26,6 +26,9 @@ class HomePage extends StatelessWidget {
             ),
             child: TextField(
               decoration: InputDecoration(
+                // Placeholder
+                hintText: "Search Pancake",
+                hintStyle: TextStyle(color: Color(0xffDDDADA), fontSize: 14),
                 // background
                 filled: true,
                 fillColor: Colors.white,
@@ -37,8 +40,30 @@ class HomePage extends StatelessWidget {
                   borderSide: BorderSide.none,
                 ),
                 // Ícones
-                prefixIcon: Icon(LucideIcons.search),
-                suffixIcon: Icon(LucideIcons.filter),
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Icon(LucideIcons.search),
+                ),
+                suffixIcon: Container(
+                  width: 100,
+                  child: IntrinsicHeight(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        VerticalDivider(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          thickness: 0.1, // espessura
+                          indent: 10, // limitar tamanho
+                          endIndent: 10,
+                        ), // divisor
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Icon(LucideIcons.filter),
+                        ), // botão de filtro
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
