@@ -23,9 +23,10 @@ class HomePage extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        // Botão de voltar
+        // Botão de voltar (início da appBar)
         leading: Container(
           margin: EdgeInsets.all(10),
+          alignment: Alignment.center,
           decoration: BoxDecoration(
             // quadrado com background ao redor (parecer um botão)
             color: Color(0xffF7F8F8),
@@ -33,6 +34,21 @@ class HomePage extends StatelessWidget {
           ),
           child: Icon(LucideIcons.chevronLeft),
         ),
+        // Botões no fim da appBar
+        actions: [
+          Container(
+            margin: EdgeInsets.all(10),
+            alignment: Alignment.center,
+            width: 37,
+            height: 37,
+            decoration: BoxDecoration(
+              // quadrado com background ao redor (parecer um botão)
+              color: Color(0xffF7F8F8),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Icon(LucideIcons.menu),
+          ),
+        ],
       ),
     );
   }
