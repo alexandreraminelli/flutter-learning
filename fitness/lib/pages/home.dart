@@ -14,9 +14,8 @@ class HomePage extends StatelessWidget {
       // Conteúdo
       appBar: appBar(),
       body: Column(
-        children: [
-          _searchField(), //
-        ],
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [_searchField(), SizedBox(height: 40), _categorySection()],
       ),
     );
   }
@@ -126,6 +125,25 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  /// Seção de categorias
+  Widget _categorySection() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20),
+      child: Column(
+        children: [
+          Text(
+            "Category", // Título
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
       ),
     );
   }
