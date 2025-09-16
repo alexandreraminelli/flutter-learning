@@ -13,6 +13,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'Poppins', // fonte padrão do app
+      ),
       debugShowCheckedModeBanner: false, // remover faixa de "debug"
       home: HomePage(), // Página inicial da aplicação
     );
