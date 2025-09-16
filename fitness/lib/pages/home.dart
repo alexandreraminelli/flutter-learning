@@ -36,6 +36,9 @@ class HomePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                   borderSide: BorderSide.none,
                 ),
+                // Ícones
+                prefixIcon: Icon(LucideIcons.search),
+                suffixIcon: Icon(LucideIcons.filter),
               ),
             ),
           ),
