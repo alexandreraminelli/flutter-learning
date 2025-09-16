@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false, // remover faixa de "debug"
       home: HomePage(), // Página inicial da aplicação
     );
   }
