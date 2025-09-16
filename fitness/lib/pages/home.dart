@@ -15,61 +15,7 @@ class HomePage extends StatelessWidget {
       appBar: appBar(),
       body: Column(
         children: [
-          // Campo de pesquisa
-          Container(
-            margin: EdgeInsets.only(top: 40, left: 20, right: 20),
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0xff1D1617).withAlpha(12),
-                  blurRadius: 40,
-                  spreadRadius: 0.0,
-                ),
-              ],
-            ),
-            child: TextField(
-              decoration: InputDecoration(
-                // Placeholder
-                hintText: "Search Pancake",
-                hintStyle: TextStyle(color: Color(0xffDDDADA), fontSize: 14),
-                // background
-                filled: true,
-                fillColor: Colors.white,
-                // espaçamento interno
-                contentPadding: EdgeInsets.all(15),
-                // remover borda e add cantos arredondados
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide.none,
-                ),
-                // Ícones
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Icon(LucideIcons.search),
-                ),
-                suffixIcon: Container(
-                  width: 100,
-                  child: IntrinsicHeight(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        VerticalDivider(
-                          color: Color.fromARGB(255, 0, 0, 0),
-                          thickness: 0.1, // espessura
-                          indent: 10, // limitar tamanho
-                          endIndent: 10,
-                        ), // divisor
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Icon(LucideIcons.filter),
-                        ), // botão de filtro
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          _searchField(), //
         ],
       ),
     );
@@ -123,6 +69,64 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  /// Caixa de pesquisa
+  Container _searchField() {
+    return Container(
+      margin: EdgeInsets.only(top: 40, left: 20, right: 20),
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Color(0xff1D1617).withAlpha(12),
+            blurRadius: 40,
+            spreadRadius: 0.0,
+          ),
+        ],
+      ),
+      child: TextField(
+        decoration: InputDecoration(
+          // Placeholder
+          hintText: "Search Pancake",
+          hintStyle: TextStyle(color: Color(0xffDDDADA), fontSize: 14),
+          // background
+          filled: true,
+          fillColor: Colors.white,
+          // espaçamento interno
+          contentPadding: EdgeInsets.all(15),
+          // remover borda e add cantos arredondados
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide.none,
+          ),
+          // Ícones
+          prefixIcon: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Icon(LucideIcons.search),
+          ),
+          suffixIcon: Container(
+            width: 100,
+            child: IntrinsicHeight(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  VerticalDivider(
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    thickness: 0.1, // espessura
+                    indent: 10, // limitar tamanho
+                    endIndent: 10,
+                  ), // divisor
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Icon(LucideIcons.filter),
+                  ), // botão de filtro
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
