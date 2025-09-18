@@ -1,18 +1,28 @@
+import "package:fitness/models/category_model.dart";
 import "package:flutter/material.dart";
+import "package:flutter_svg/flutter_svg.dart";
 import "package:lucide_icons/lucide_icons.dart";
 
 /// Página inicial do app
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  // const HomePage({super.key});
+
+  // Obter lista de categorias
+  List<CategoryModel> categories = [];
+  void _getCategories() {
+    categories = CategoryModel.getCategories();
+  }
 
   @override
   Widget build(BuildContext context) {
+    _getCategories();
     // Layout Scaffold
     return Scaffold(
       // Aparência
       backgroundColor: Colors.white,
-      // Conteúdo
+      // Layout
       appBar: appBar(),
+      // Conteúdo
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [_searchField(), SizedBox(height: 40), _categorySection()],
@@ -131,20 +141,71 @@ class HomePage extends StatelessWidget {
 
   /// Seção de categorias
   Widget _categorySection() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 20),
-      child: Column(
-        children: [
-          Text(
-            "Category", // Título
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 15,
+      children: [
+        // Título
+        Padding(
+          padding: const EdgeInsets.only(left: 20),
+          child: Column(
+            children: [
+              Text(
+                "Category", // Título
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+        // Lista de categorias
+        Container(
+          height: 120,
+          child: ListView.separated(
+            itemCount: categories.length, // quantidade de elementos
+            scrollDirection: Axis.horizontal, // direção de rolagem
+            padding: EdgeInsets.only(left: 20, right: 20),
+            separatorBuilder: (context, index) => SizedBox(width: 25),
+            itemBuilder: (context, index) {
+              return Container(
+                width: 100,
+                decoration: BoxDecoration(
+                  color: categories[index].boxColor.withValues(alpha: 0.3),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  spacing: 15,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Ícone da categoria
+                    Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      child: SvgPicture.asset(categories[index].iconPath),
+                    ),
+                    // Nome da categoria
+                    Text(
+                      categories[index].name,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }
