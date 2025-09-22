@@ -331,6 +331,86 @@ class HomePage extends StatelessWidget {
 
   /// Seção de itens populares
   Widget _popularSection() {
-    return Text("Popular Section");
+    return Column(
+      children: [
+        // Título
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text("Popular", style: sectionTitleStyle),
+        ),
+        SizedBox(height: 15),
+        // Lista de dietas populares
+        ListView.separated(
+          padding: EdgeInsets.only(left: 20, right: 20),
+          itemCount: popularDiets.length,
+          shrinkWrap: true, // necessário para ListView dentro de outra ListView
+          separatorBuilder: (context, index) =>
+              SizedBox(height: 25), // separador
+          itemBuilder: (context, index) {
+            // Card de dieta popular
+            return Container(
+              height: 100,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0xff1d1617).withValues(alpha: .07),
+                    offset: Offset(0, 10),
+                    blurRadius: 40,
+                    spreadRadius: 0,
+                  ),
+                ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  // imagem
+                  SvgPicture.asset(
+                    popularDiets[index].iconPath,
+                    width: 65,
+                    height: 65,
+                  ),
+                  // informações da dieta
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Nome
+                      Text(
+                        popularDiets[index].name,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                          fontSize: 16,
+                        ),
+                      ),
+                      // Nível e calorias
+                      Text(
+                        "${popularDiets[index].level} | ${popularDiets[index].calorie}",
+                        style: TextStyle(
+                          color: Color(0xff7B6F72),
+                          fontSize: 13,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
+                  // Botão de Veja Mais
+                  GestureDetector(
+                    onTap: () {},
+                    child: Icon(
+                      LucideIcons.chevronRight,
+                      size: 30,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+      ],
+    );
   }
 }
