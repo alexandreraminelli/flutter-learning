@@ -1,21 +1,33 @@
 import "package:fitness/models/category_model.dart";
+import "package:fitness/models/diet_model.dart";
 import "package:flutter/material.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:lucide_icons/lucide_icons.dart";
 
 /// Página inicial do app
 class HomePage extends StatelessWidget {
-  // const HomePage({super.key});
+  HomePage({super.key});
 
-  // Obter lista de categorias
+  // Listas de itens
   List<CategoryModel> categories = [];
-  void _getCategories() {
+  List<DietModel> diets = [];
+
+  // Obter valores iniciais
+  void _getInitialInfo() {
     categories = CategoryModel.getCategories();
+    diets = DietModel.getDiets();
   }
+
+  /// Estilo do título das seções.
+  TextStyle sectionTitleStyle = TextStyle(
+    color: Colors.black,
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
+  );
 
   @override
   Widget build(BuildContext context) {
-    _getCategories();
+    _getInitialInfo();
     // Layout Scaffold
     return Scaffold(
       // Aparência
@@ -25,7 +37,13 @@ class HomePage extends StatelessWidget {
       // Conteúdo
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [_searchField(), SizedBox(height: 40), _categorySection()],
+        children: [
+          _searchField(),
+          SizedBox(height: 40),
+          _categorySection(),
+          SizedBox(height: 40),
+          _dietRecommendationSection(),
+        ],
       ),
     );
   }
@@ -145,18 +163,14 @@ class HomePage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 15,
       children: [
-        // Título
+        // Título da seção
         Padding(
           padding: const EdgeInsets.only(left: 20),
           child: Column(
             children: [
               Text(
                 "Category", // Título
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: sectionTitleStyle,
               ),
             ],
           ),
@@ -203,6 +217,102 @@ class HomePage extends StatelessWidget {
                 ),
               );
             },
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// Seção de recomendação para dieta.
+  Widget _dietRecommendationSection() {
+    return Column(
+      spacing: 15,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Título da seção
+        Padding(
+          padding: const EdgeInsets.only(left: 20),
+          child: Text("Recommendation\nfor Diet", style: sectionTitleStyle),
+        ),
+        // Lista de dietas
+        Container(
+          height: 240,
+          child: ListView.separated(
+            itemBuilder: (context, index) {
+              // Cards de dieta
+              return Container(
+                width: 210,
+                decoration: BoxDecoration(
+                  color: diets[index].boxColor.withValues(alpha: 0.3),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  spacing: 14,
+                  children: [
+                    SizedBox(height: 8),
+                    // Imagem da dieta
+                    SvgPicture.asset(diets[index].iconPath),
+                    Column(
+                      children: [
+                        // nome da dieta
+                        Text(
+                          diets[index].name,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                            fontSize: 16,
+                          ),
+                        ),
+                        // Informações da dieta
+                        Text(
+                          "${diets[index].level} | ${diets[index].duration} | ${diets[index].calorie}",
+                          style: TextStyle(
+                            color: Color(0xff7B6F72),
+                            fontSize: 13,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                    // Botão de dieta
+                    Container(
+                      height: 45,
+                      width: 130,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            diets[index].viewIsSelected
+                                ? Color(0xFF81BFFD)
+                                : Colors.transparent,
+                            diets[index].viewIsSelected
+                                ? Color(0xff92a3fd)
+                                : Colors.transparent,
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "View",
+                          style: TextStyle(
+                            color: diets[index].viewIsSelected
+                                ? Colors.white
+                                : Color(0xffc588f2),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+
+            separatorBuilder: (context, index) =>
+                SizedBox(width: 25), // separador entre os itens
+            itemCount: diets.length, // quantidade de elementos
+            scrollDirection: Axis.horizontal, // direção de rolagem
           ),
         ),
       ],
