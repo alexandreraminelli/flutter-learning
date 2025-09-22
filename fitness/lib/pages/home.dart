@@ -1,5 +1,6 @@
 import "package:fitness/models/category_model.dart";
 import "package:fitness/models/diet_model.dart";
+import "package:fitness/models/popular_model.dart";
 import "package:flutter/material.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:lucide_icons/lucide_icons.dart";
@@ -11,11 +12,13 @@ class HomePage extends StatelessWidget {
   // Listas de itens
   List<CategoryModel> categories = [];
   List<DietModel> diets = [];
+  List<PopularDietsModel> popularDiets = [];
 
   // Obter valores iniciais
   void _getInitialInfo() {
     categories = CategoryModel.getCategories();
     diets = DietModel.getDiets();
+    popularDiets = PopularDietsModel.getPopularDiets();
   }
 
   /// Estilo do título das seções.
@@ -35,14 +38,20 @@ class HomePage extends StatelessWidget {
       // Layout
       appBar: appBar(),
       // Conteúdo
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
         children: [
-          _searchField(),
-          SizedBox(height: 40),
-          _categorySection(),
-          SizedBox(height: 40),
-          _dietRecommendationSection(),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _searchField(),
+              SizedBox(height: 40),
+              _categorySection(),
+              SizedBox(height: 40),
+              _dietRecommendationSection(),
+              SizedBox(height: 40),
+              _popularSection(),
+            ],
+          ),
         ],
       ),
     );
@@ -318,5 +327,10 @@ class HomePage extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  /// Seção de itens populares
+  Widget _popularSection() {
+    return Text("Popular Section");
   }
 }
