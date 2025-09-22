@@ -238,6 +238,7 @@ class HomePage extends StatelessWidget {
         Container(
           height: 240,
           child: ListView.separated(
+            padding: EdgeInsets.only(left: 20, right: 20),
             itemBuilder: (context, index) {
               // Cards de dieta
               return Container(
