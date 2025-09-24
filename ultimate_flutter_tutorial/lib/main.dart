@@ -30,7 +30,8 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.indigo, // aplicar tema de cores com base em uma cor seed
+          seedColor:
+              Colors.indigo, // aplicar tema de cores com base em uma cor seed
           brightness: Brightness.dark, // aplicar tema escuro
         ),
       ),
@@ -92,10 +93,33 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Text(
-          "Hello, World!", // String data
-          // Argumentos
-          style: TextStyle(fontSize: 20, color: Colors.amber),
+        child: Container(
+          // tamanho
+          height: double.infinity, // max-h
+          width: double.infinity, // max-w
+          // aparência
+          decoration: BoxDecoration(
+            color: Colors.red,
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          // espaçamento
+          padding: EdgeInsets.all(50.0),
+          margin: EdgeInsets.all(40.0),
+
+          // filho
+          child: Container(
+            // tamanho
+            height: double.infinity, // max-h
+            width: double.infinity, // max-w
+            // aparência
+            decoration: BoxDecoration(
+              color: Colors.orange,
+              borderRadius: BorderRadius.circular(25.0),
+            ),
+            // espaçamento
+            padding: EdgeInsets.all(50.0),
+            child: Text("Hello World"),
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
