@@ -92,19 +92,45 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
 
-      body: Column(
+      body: Wrap(
+        // Direção (como Row ou Column)
+        direction: Axis.horizontal,
+        // espaçamento
+        spacing: 16, // mesmo eixo
+        runSpacing: 24, // entre eixos (quebra/wrap)
+        // conteúdo
         children: [
-          ListTile(
-            // aparência
-            tileColor: Colors.deepOrangeAccent,
-            // conteúdo
-            leading: Icon(Icons.join_full),
-            title: Text("Título"),
-            trailing: Text("ffdfd"),
-            // função
-            onTap: () {
-              print("Clicou no ListTile!");
-            },
+          Container(
+            height: 100,
+            width: 100,
+            decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          Container(
+            height: 100,
+            width: 100,
+            decoration: BoxDecoration(
+              color: Colors.orange,
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          Container(
+            height: 100,
+            width: 100,
+            decoration: BoxDecoration(
+              color: Colors.yellow,
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          Container(
+            height: 100,
+            width: 100,
+            decoration: BoxDecoration(
+              color: Colors.green,
+              borderRadius: BorderRadius.circular(10),
+            ),
           ),
         ],
       ),
