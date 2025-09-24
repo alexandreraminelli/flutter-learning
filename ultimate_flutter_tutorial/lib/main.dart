@@ -90,54 +90,11 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Container(
-          color: Colors.black38,
-          child: Row(
-            // Alinhamento dos elementos
-            mainAxisAlignment: MainAxisAlignment.spaceAround, // eixo H
-            // Tamanho do eixo principal (height para Column e width para Row)
-            mainAxisSize: MainAxisSize.min,
-
-            // Filhos
-            children: [
-              Container(
-                // tamanho
-                height: 100,
-                width: 100,
-                // aparência
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-                // Conteúdo
-                child: Center(child: Text("rdsmkoeirfjmd")),
-              ),
-              Container(
-                // tamanho
-                height: 100,
-                width: 100,
-                // aparência
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-              ),
-              Container(
-                // tamanho
-                height: 100,
-                width: 100,
-                // aparência
-                decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-              ),
-            ],
-          ),
-        ),
+      body: Image.asset(
+        // caminho (src) da imagem (pasta assets/images)
+        "assets/images/abstract-wavy-background.jpg",
+        height: double.infinity, // ocupar toda a altura
+        fit: BoxFit.cover, // imagem ocupar todo o Widget Image
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
