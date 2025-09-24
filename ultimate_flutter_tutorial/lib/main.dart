@@ -91,23 +91,26 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
 
-      body: Stack(
-        children: [
-          // Widget Base
-          Image.asset(
-            "assets/images/abstract-wavy-background.jpg",
-            fit: BoxFit.cover,
-            height: 300,
-            width: double.maxFinite,
-          ),
-          // Demais widgets (sobrepostos ao base)
-          SizedBox(
-            height: 300,
-            child: Center(
-              child: Text("Flutter", style: TextStyle(fontSize: 40)),
+      body: Padding(
+        padding: EdgeInsets.all(50.0),
+        child: Stack(
+          children: [
+            // Widget Base
+            Image.asset(
+              "assets/images/abstract-wavy-background.jpg",
+              fit: BoxFit.cover,
+              height: 300,
+              width: double.maxFinite,
             ),
-          ),
-        ],
+            // Demais widgets (sobrepostos ao base)
+            SizedBox(
+              height: 300,
+              child: Center(
+                child: Text("Flutter", style: TextStyle(fontSize: 40)),
+              ),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
