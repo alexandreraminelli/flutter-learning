@@ -94,31 +94,45 @@ class _MyHomePageState extends State<MyHomePage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Container(
-          // tamanho
-          height: double.infinity, // max-h
-          width: double.infinity, // max-w
-          // aparência
-          decoration: BoxDecoration(
-            color: Colors.red,
-            borderRadius: BorderRadius.circular(25.0),
-          ),
-          // espaçamento
-          padding: EdgeInsets.all(50.0),
-          margin: EdgeInsets.all(40.0),
+          width: double.infinity,
+          child: Column(
+            // Alinhamento dos elementos
+            mainAxisAlignment: MainAxisAlignment.start, // eixo V
+            crossAxisAlignment: CrossAxisAlignment.center, // eixo H
+            // mainAxisSize: MainAxisSize.min, // coluna ocupar espaço mínimo necessário
 
-          // filho
-          child: Container(
-            // tamanho
-            height: double.infinity, // max-h
-            width: double.infinity, // max-w
-            // aparência
-            decoration: BoxDecoration(
-              color: Colors.orange,
-              borderRadius: BorderRadius.circular(25.0),
-            ),
-            // espaçamento
-            padding: EdgeInsets.all(50.0),
-            child: Text("Hello World"),
+            children: [
+              Container(
+                // tamanho
+                height: 100,
+                width: 100,
+                // aparência
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.circular(25.0),
+                ),
+              ),
+              Container(
+                // tamanho
+                height: 100,
+                width: 100,
+                // aparência
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(25.0),
+                ),
+              ),
+              Container(
+                // tamanho
+                height: 100,
+                width: 100,
+                // aparência
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.circular(25.0),
+                ),
+              ),
+            ],
           ),
         ),
       ),
