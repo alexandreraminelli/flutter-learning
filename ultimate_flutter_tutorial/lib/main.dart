@@ -92,26 +92,21 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
 
-      body: Padding(
-        padding: EdgeInsets.all(50.0),
-        child: Stack(
-          children: [
-            // Widget Base
-            Image.asset(
-              "assets/images/abstract-wavy-background.jpg",
-              fit: BoxFit.cover,
-              height: 300,
-              width: double.maxFinite,
-            ),
-            // Demais widgets (sobrepostos ao base)
-            SizedBox(
-              height: 300,
-              child: Center(
-                child: Text("Flutter", style: TextStyle(fontSize: 40)),
-              ),
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          ListTile(
+            // aparência
+            tileColor: Colors.deepOrangeAccent,
+            // conteúdo
+            leading: Icon(Icons.join_full),
+            title: Text("Título"),
+            trailing: Text("ffdfd"),
+            // função
+            onTap: () {
+              print("Clicou no ListTile!");
+            },
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
