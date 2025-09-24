@@ -90,11 +90,24 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Image.asset(
-        // caminho (src) da imagem (pasta assets/images)
-        "assets/images/abstract-wavy-background.jpg",
-        height: double.infinity, // ocupar toda a altura
-        fit: BoxFit.cover, // imagem ocupar todo o Widget Image
+
+      body: Stack(
+        children: [
+          // Widget Base
+          Image.asset(
+            "assets/images/abstract-wavy-background.jpg",
+            fit: BoxFit.cover,
+            height: 300,
+            width: double.maxFinite,
+          ),
+          // Demais widgets (sobrepostos ao base)
+          SizedBox(
+            height: 300,
+            child: Center(
+              child: Text("Flutter", style: TextStyle(fontSize: 40)),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
