@@ -19,7 +19,19 @@ class MyApp extends StatelessWidget {
         ),
       ),
       // Página inicial do app
-      home: Scaffold(),
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.teal,
+
+          // Título da página
+          title: Text("Flutter App"),
+          centerTitle: false,
+          // Botão principal
+          leading: Icon(Icons.login),
+          // Botões de ação
+          actions: [Text("efndsiejudfn"), Icon(Icons.login)],
+        ),
+      ),
     );
   }
 }
