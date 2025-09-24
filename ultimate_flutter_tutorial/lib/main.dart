@@ -21,15 +21,27 @@ class MyApp extends StatelessWidget {
       // Página inicial do app
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.teal,
-
-          // Título da página
-          title: Text("Flutter App"),
-          centerTitle: false,
-          // Botão principal
-          leading: Icon(Icons.login),
-          // Botões de ação
-          actions: [Text("efndsiejudfn"), Icon(Icons.login)],
+          title: Text("Flutter App"), // Título da página
+          centerTitle: true,
+        ),
+        bottomNavigationBar: NavigationBar(
+          // Lista de destinos do app
+          destinations: [
+            NavigationDestination(
+              icon: Icon(Icons.home_rounded),
+              label: "Início",
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.person_rounded),
+              label: "Perfil",
+            ),
+          ],
+          selectedIndex: 0, // índice atual
+          // Função chamada ao selecionar um destino
+          // value: índice do destino selecionado
+          onDestinationSelected: (int value) {
+            // TODO: navegação entre as páginas
+          },
         ),
       ),
     );
