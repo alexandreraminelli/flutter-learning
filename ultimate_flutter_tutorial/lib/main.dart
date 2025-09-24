@@ -94,13 +94,16 @@ class _MyHomePageState extends State<MyHomePage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Container(
+          color: Colors.black38,
           width: double.infinity,
-          child: Column(
+          child: Row(
             // Alinhamento dos elementos
-            mainAxisAlignment: MainAxisAlignment.start, // eixo V
-            crossAxisAlignment: CrossAxisAlignment.center, // eixo H
-            // mainAxisSize: MainAxisSize.min, // coluna ocupar espaço mínimo necessário
+            mainAxisAlignment: MainAxisAlignment.spaceAround, // eixo H
+            crossAxisAlignment: CrossAxisAlignment.center, // eixo V
+            // Tamanho do eixo principal (height para Column e width para Row)
+            //mainAxisSize: MainAxisSize.min,
 
+            // Filhos
             children: [
               Container(
                 // tamanho
