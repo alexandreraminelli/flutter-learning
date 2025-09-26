@@ -65,12 +65,9 @@ class MyApp extends StatelessWidget {
             ),
           ],
         ),
-        drawer: Drawer(
-          child: Column(
-            children: [
-              DrawerHeader(child: Text("Drawer")), // cabeçalho do Drawer
-              ListTile(title: Text("Logout")),
-            ],
+        drawer: SafeArea(
+          child: Drawer(
+            child: Column(children: [ListTile(title: Text("Logout"))]),
           ),
         ),
       ),
