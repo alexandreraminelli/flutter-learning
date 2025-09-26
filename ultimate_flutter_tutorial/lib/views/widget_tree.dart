@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ultimate_flutter_tutorial/data/notifiers.dart';
 import 'package:ultimate_flutter_tutorial/views/pages/home_page.dart';
 import 'package:ultimate_flutter_tutorial/views/pages/profile_page.dart';
-import 'package:ultimate_flutter_tutorial/widgets/navbar_widget.dart';
+import 'package:ultimate_flutter_tutorial/views/widgets/navbar_widget.dart';
 
 /// Lista de páginas.
 List<Widget> pages = [HomePage(), ProfilePage()];
@@ -17,10 +18,17 @@ class WidgetTree extends StatelessWidget {
         centerTitle: true,
       ),
 
-      body: pages.elementAt(0),
+      body: ValueListenableBuilder(
+        // atualizar página selecionada (classe ValueNotifier)
+        valueListenable: selectedPageNotifier,
+        builder: (context, selectedPage, child) {
+          return pages.elementAt(
+            selectedPage,
+          ); // alternar entre as páginas da lista
+        },
+      ),
 
       bottomNavigationBar: NavbarWidget(),
     );
-    ;
   }
 }
