@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ultimate_flutter_tutorial/widgets/navbar_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,44 +33,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  /// Índice da página atual
-  int currentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
+    // Conteúdo do layout mobile
     return Scaffold(
-      // Conteúdo do layout mobile
       appBar: AppBar(
         title: Text("Flutter App"), // Título da página
         centerTitle: true,
       ),
-
-      body: Center(child: currentIndex == 0 ? Text("Início") : Text("Perfil")),
-
-      bottomNavigationBar: NavigationBar(
-        // Lista de destinos do app
-        destinations: [
-          NavigationDestination(
-            icon: Icon(Icons.home_rounded),
-            label: "Início",
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.person_rounded),
-            label: "Perfil",
-          ),
-        ],
-        selectedIndex: currentIndex, // índice atual
-        // Função chamada ao selecionar um destino
-        // value: índice do destino selecionado
-        onDestinationSelected: (int value) {
-          // Tornar destino selecionado o atual
-          setState(() {
-            currentIndex = value;
-          });
-
-          // TODO: navegação entre as páginas
-        },
-      ),
+      bottomNavigationBar: NavbarWidget(),
     );
   }
 }
