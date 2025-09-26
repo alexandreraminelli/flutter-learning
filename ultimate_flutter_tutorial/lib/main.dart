@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       ),
       // Página inicial do app
       home: Scaffold(
+        // Conteúdo do layout mobile
         appBar: AppBar(
           title: Text("Flutter App"), // Título da página
           centerTitle: true,
@@ -42,6 +43,27 @@ class MyApp extends StatelessWidget {
           onDestinationSelected: (int value) {
             // TODO: navegação entre as páginas
           },
+        ),
+        floatingActionButton: Column(
+          spacing: 10.0,
+          mainAxisSize: MainAxisSize
+              .min, // evitar que ícones sejam empurrados fora do canto superior
+          children: [
+            // FAB 1
+            FloatingActionButton(
+              child: Icon(Icons.edit_rounded),
+              onPressed: () {
+                // TODO: ação do FAB
+              },
+            ),
+            // FAB 2
+            FloatingActionButton(
+              child: Icon(Icons.add_rounded),
+              onPressed: () {
+                // TODO: ação do FAB
+              },
+            ),
+          ],
         ),
       ),
     );
