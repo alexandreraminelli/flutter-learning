@@ -44,32 +44,6 @@ class MyApp extends StatelessWidget {
             // TODO: navegação entre as páginas
           },
         ),
-        floatingActionButton: Column(
-          spacing: 10.0,
-          mainAxisSize: MainAxisSize
-              .min, // evitar que ícones sejam empurrados fora do canto superior
-          children: [
-            // FAB 1
-            FloatingActionButton(
-              child: Icon(Icons.edit_rounded),
-              onPressed: () {
-                // TODO: ação do FAB
-              },
-            ),
-            // FAB 2
-            FloatingActionButton(
-              child: Icon(Icons.add_rounded),
-              onPressed: () {
-                // TODO: ação do FAB
-              },
-            ),
-          ],
-        ),
-        drawer: SafeArea(
-          child: Drawer(
-            child: Column(children: [ListTile(title: Text("Logout"))]),
-          ),
-        ),
       ),
     );
   }
