@@ -81,10 +81,16 @@ class _ProfilePageState extends State<ProfilePage> {
               }),
             ),
             Text(sliderValue.toString()), // valor do Slider
+            //
 
-            Image.asset("assets/images/bg.jpg"),
-            SizedBox(height: 14),
-            Image.asset("assets/images/bg.jpg"),
+            // Widget clicável
+            GestureDetector(
+              child: Image.asset("assets/images/bg.jpg"),
+              // Função ao clicar no Widget
+              onTap: () {
+                print("image selected");
+              },
+            ),
           ],
         ),
       ),
