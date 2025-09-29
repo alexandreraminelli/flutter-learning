@@ -17,6 +17,9 @@ class _ProfilePageState extends State<ProfilePage> {
   /// Valor do switch
   bool isSwitched = false;
 
+  /// Valor do slider
+  double sliderValue = 0.0;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -67,6 +70,16 @@ class _ProfilePageState extends State<ProfilePage> {
               isSwitched = value;
             }),
           ),
+
+          Slider.adaptive(
+            value: sliderValue,
+            max: 100.0,
+            divisions: 10, // limitar valores do slider a serem múltiplos de D
+            onChanged: (double value) => setState(() {
+              sliderValue = value;
+            }),
+          ),
+          Text(sliderValue.toString()), // valor do Slider
         ],
       ),
     );
