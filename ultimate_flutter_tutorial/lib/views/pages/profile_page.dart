@@ -91,6 +91,20 @@ class _ProfilePageState extends State<ProfilePage> {
                 print("image selected");
               },
             ),
+            SizedBox(height: 20),
+
+            InkWell(
+              splashColor: Colors.teal,
+              child: Container(
+                height: 200,
+                width: double.infinity,
+                color: Colors.black87,
+              ),
+              // Função ao clicar no Widget
+              onTap: () {
+                print("container selected");
+              },
+            ),
           ],
         ),
       ),
