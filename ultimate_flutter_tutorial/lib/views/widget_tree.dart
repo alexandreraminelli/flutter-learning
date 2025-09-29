@@ -16,6 +16,26 @@ class WidgetTree extends StatelessWidget {
       appBar: AppBar(
         title: Text("Flutter App"), // Título da página
         centerTitle: true,
+
+        actions: [
+          // botão de tema (light ou dark)
+          IconButton(
+            icon: ValueListenableBuilder(
+              valueListenable: isDarkModeNotifier,
+              builder: (context, isDarkMode, child) {
+                return Icon(
+                  isDarkMode
+                      ? Icons.dark_mode_rounded
+                      : Icons.light_mode_rounded,
+                );
+              },
+            ),
+            onPressed: () {
+              // Alterar tema da aplicação
+              isDarkModeNotifier.value = !isDarkModeNotifier.value;
+            },
+          ),
+        ],
       ),
 
       body: ValueListenableBuilder(
