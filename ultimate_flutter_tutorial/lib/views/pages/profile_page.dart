@@ -20,6 +20,9 @@ class _ProfilePageState extends State<ProfilePage> {
   /// Valor do slider
   double sliderValue = 0.0;
 
+  /// Valor do DropdownButton
+  String? dropdownButtonValue;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -27,6 +30,29 @@ class _ProfilePageState extends State<ProfilePage> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
+            // DropdownButton (Material 2)
+            DropdownButton<String>(
+              value: dropdownButtonValue,
+              // itens do menu
+              items: [
+                DropdownMenuItem(value: "e1", child: Text("Elemento 1")),
+                DropdownMenuItem(value: "e2", child: Text("Elemento 2")),
+                DropdownMenuItem(value: "e3", child: Text("Elemento 3")),
+              ],
+              // código executado ao interagir
+              onChanged: (String? value) => setState(() {
+                dropdownButtonValue =
+                    value; // atualizar texto de exibição
+              }),
+            ),
+
+            // DropdownMenu (Material 3)
+            DropdownMenu<int>(
+              dropdownMenuEntries: [
+                DropdownMenuEntry(value: 1, label: "Elemento 1"),
+              ],
+            ),
+
             // Input
             TextField(
               controller: controller,
