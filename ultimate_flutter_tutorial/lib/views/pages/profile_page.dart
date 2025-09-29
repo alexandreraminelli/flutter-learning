@@ -24,9 +24,7 @@ class _ProfilePageState extends State<ProfilePage> {
           TextField(
             controller: controller,
             decoration: InputDecoration(border: OutlineInputBorder()),
-            onEditingComplete: () {
-              setState(() {}); // atualizar valor no controlador
-            },
+            onEditingComplete: () => setState(() {}),
           ),
           // Output
           Text(controller.text),
@@ -46,11 +44,9 @@ class _ProfilePageState extends State<ProfilePage> {
             tristate: true, // 3º estado (indeterminado/null)
             title: Text("Clique em Mim"),
             value: isChecked,
-            onChanged: (bool? value) {
-              setState(() {
-                isChecked = value;
-              });
-            },
+            onChanged: (bool? value) => setState(() {
+              isChecked = value;
+            }),
           ),
         ],
       ),
