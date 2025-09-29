@@ -14,6 +14,9 @@ class _ProfilePageState extends State<ProfilePage> {
   /// Valor do checkbox
   bool? isChecked = false;
 
+  /// Valor do switch
+  bool isSwitched = false;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -46,6 +49,22 @@ class _ProfilePageState extends State<ProfilePage> {
             value: isChecked,
             onChanged: (bool? value) => setState(() {
               isChecked = value;
+            }),
+          ),
+
+          Switch(
+            value: isSwitched,
+            onChanged: (value) => setState(() {
+              isSwitched = value;
+            }),
+          ),
+
+          SwitchListTile(
+            title: Text("Switch Title"),
+            subtitle: Text("Switch Subtitle"),
+            value: isSwitched,
+            onChanged: (value) => setState(() {
+              isSwitched = value;
             }),
           ),
         ],
