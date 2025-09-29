@@ -105,6 +105,33 @@ class _ProfilePageState extends State<ProfilePage> {
                 print("container selected");
               },
             ),
+
+            SizedBox(height: 200),
+            /* Botões */
+            Column(
+              spacing: 40,
+              children: [
+                // Estilos de botões
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text("Elevated Button"),
+                ),
+                FilledButton(onPressed: () {}, child: Text("Filled Button")),
+                TextButton(onPressed: () {}, child: Text("Text Button")),
+                OutlinedButton(
+                  onPressed: () {},
+                  child: Text("Outlined Button"),
+                ),
+                FilledButton.tonal(
+                  onPressed: () {},
+                  child: Text("Elevated Button"),
+                ),
+
+                // Botões pré-definidos
+                CloseButton(),
+                BackButton(),
+              ],
+            ),
           ],
         ),
       ),
