@@ -41,7 +41,7 @@ class WidgetTree extends StatelessWidget {
           IconButton(
             onPressed: () {
               // Navegar até página de configurações
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => SettingsPage()),
               );
