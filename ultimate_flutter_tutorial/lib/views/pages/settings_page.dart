@@ -57,6 +57,21 @@ class _SettingsPageState extends State<SettingsPage> {
                 },
                 child: Text("Open SnackBar"),
               ),
+
+              // Divisor horizontal
+              Divider(
+                // estilização
+                color: Colors.teal,
+                thickness: 5.0, // espessura
+                // espaçamento antes e depois do fim (fazer divider não ocupar 100%)
+                indent: 50.0,
+                endIndent: 50.0,
+              ),
+              Container(
+                height: 50.0,
+                child: VerticalDivider(), // Divisor vertical
+              ),
+
               // Alert Example
               ElevatedButton(
                 onPressed: () {
