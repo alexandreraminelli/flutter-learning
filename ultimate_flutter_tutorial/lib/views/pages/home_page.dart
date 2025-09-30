@@ -11,6 +11,21 @@ class HomePage extends StatelessWidget {
       child: Column(
         children: [
           HeroWidget(), // imagem para animação
+          // Cards
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            width: double.infinity, // w-full
+            child: Card(
+              child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment
+                      .start, // alinhamento do conteúdo do card
+                  children: [Text("Basic Layout"), Text("Description")],
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
