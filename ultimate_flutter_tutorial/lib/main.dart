@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ultimate_flutter_tutorial/data/notifiers.dart';
-import 'package:ultimate_flutter_tutorial/views/widget_tree.dart';
+import 'package:ultimate_flutter_tutorial/views/pages/welcome_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
           // Página inicial do app
-          home: WidgetTree(),
+          home: WelcomePage(),
         );
       },
     );
