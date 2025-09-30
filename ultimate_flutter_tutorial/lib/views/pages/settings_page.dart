@@ -41,6 +41,23 @@ class _SettingsPageState extends State<SettingsPage> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
+              // SnackBar Example
+              ElevatedButton(
+                onPressed: () {
+                  // Exibir SnackBar
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("Título"),
+
+                      duration: Duration(seconds: 5), // tempo de exibição
+                      behavior: SnackBarBehavior
+                          .floating, // aparência: floating (com margem ao redor) ou fixed (ocupar toda largura)
+                    ),
+                  );
+                },
+                child: Text("Open SnackBar"),
+              ),
+
               // DropdownButton (Material 2)
               DropdownButton<String>(
                 value: dropdownButtonValue,
@@ -151,8 +168,9 @@ class _SettingsPageState extends State<SettingsPage> {
                   // Estilos de botões
                   ElevatedButton(
                     onPressed: () {},
-                    child: Text("Elevated Button"),
+                    child: Text("Show SnackBar"),
                   ),
+
                   FilledButton(onPressed: () {}, child: Text("Filled Button")),
                   TextButton(onPressed: () {}, child: Text("Text Button")),
                   OutlinedButton(
@@ -161,7 +179,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   FilledButton.tonal(
                     onPressed: () {},
-                    child: Text("Elevated Button"),
+                    child: Text("Tonal Button"),
                   ),
 
                   // Botões pré-definidos

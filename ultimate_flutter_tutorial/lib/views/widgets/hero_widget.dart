@@ -9,7 +9,11 @@ class HeroWidget extends StatelessWidget {
       tag: "hero1", // identificador de pares Hero
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20.0),
-        child: Image.asset("assets/images/bg.jpg"),
+        child: Image.asset(
+          "assets/images/bg.jpg",
+          color: Colors.teal,
+          colorBlendMode: BlendMode.darken,
+        ),
       ),
     );
   }
