@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:ultimate_flutter_tutorial/views/widget_tree.dart';
 import 'package:ultimate_flutter_tutorial/views/widgets/hero_widget.dart';
 
@@ -14,7 +15,17 @@ class WelcomePage extends StatelessWidget {
           spacing: 30,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            HeroWidget(), // imagem para animação
+            // Ilustração com animação
+            Lottie.asset("assets/lotties/welcome.json"),
+            // Nome do app
+            Text(
+              "Flutter Mapp",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 50.0,
+                letterSpacing: 50.0,
+              ),
+            ),
             // Botão pra página inicial
             FilledButton(
               onPressed: () => Navigator.pushReplacement(
