@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
       padding: EdgeInsets.all(20.0),
       child: Column(
         children: [
-          HeroWidget(), // imagem para animação
+          HeroWidget(title: "Flutter Mapp"), // imagem para animação
           // Cards
           Container(
             padding: EdgeInsets.symmetric(vertical: 10),
