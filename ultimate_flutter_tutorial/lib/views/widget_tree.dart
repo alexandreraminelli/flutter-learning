@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ultimate_flutter_tutorial/data/notifiers.dart';
 import 'package:ultimate_flutter_tutorial/views/pages/home_page.dart';
 import 'package:ultimate_flutter_tutorial/views/pages/profile_page.dart';
+import 'package:ultimate_flutter_tutorial/views/pages/settings_page.dart';
 import 'package:ultimate_flutter_tutorial/views/widgets/navbar_widget.dart';
 
 /// Lista de páginas.
@@ -34,6 +35,19 @@ class WidgetTree extends StatelessWidget {
               // Alterar tema da aplicação
               isDarkModeNotifier.value = !isDarkModeNotifier.value;
             },
+            tooltip: "Tema",
+          ),
+          // Botão de configurações
+          IconButton(
+            onPressed: () {
+              // Navegar até página de configurações
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingsPage()),
+              );
+            },
+            icon: Icon(Icons.settings_rounded),
+            tooltip: "Configurações",
           ),
         ],
       ),
