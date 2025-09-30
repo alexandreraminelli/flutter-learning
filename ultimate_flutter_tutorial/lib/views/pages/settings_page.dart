@@ -29,8 +29,12 @@ class _SettingsPageState extends State<SettingsPage> {
       appBar: AppBar(
         title: Text("Configurações"),
 
-        // não atribuir BackButton automaticamente ao leading
-        // automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false,
+        leading: BackButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
