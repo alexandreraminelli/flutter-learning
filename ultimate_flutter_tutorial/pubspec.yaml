@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.14.4
   lottie: ^3.3.2
   shared_preferences: ^2.5.3
 
@@ -58,6 +59,7 @@ flutter:
   assets:
     - assets/images/ # pasta de imagens
     - assets/lotties/ # pasta de animações
+    - assets/icon/ # pasta de ícones e logo
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
