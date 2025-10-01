@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ultimate_flutter_tutorial/data/constants.dart';
+import 'package:ultimate_flutter_tutorial/views/widgets/container_widget.dart';
 import 'package:ultimate_flutter_tutorial/views/widgets/hero_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -9,33 +9,22 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
           children: [
             HeroWidget(title: "Flutter Mapp"), // imagem para animação
             // Cards
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10),
-              width: double.infinity, // w-full
-              child: Card(
-                child: Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment
-                        .start, // alinhamento do conteúdo do card
-                    children: [
-                      Text(
-                        "Basic Layout",
-                        style: KTextStyle.titleTealText,
-                      ), // título
-                      Text(
-                        "Description",
-                        style: KTextStyle.descriptionText,
-                      ), // descrição
-                    ],
-                  ),
-                ),
-              ),
+            ContainerWidget(
+              title: "Basic Layout",
+              description: "This is a description",
+            ),
+            ContainerWidget(
+              title: "Basic Layout",
+              description: "This is a description",
+            ),
+            ContainerWidget(
+              title: "Basic Layout",
+              description: "This is a description",
             ),
           ],
         ),

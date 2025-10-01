@@ -20,17 +20,14 @@ class OnboardingPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Ilustração com animação
-                Lottie.asset("assets/lotties/home.json", height: 300.0),
-
-                SizedBox(height: 20.0),
+                Lottie.asset("assets/lotties/hi.json", height: 300.0),
 
                 Text(
                   "Flutter Mapp is the way to learn Flutter, period.",
                   style: KTextStyle.descriptionText,
                   textAlign: TextAlign.center,
                 ),
-
-                SizedBox(height: 16.0),
+                SizedBox(height: 20.0),
 
                 // Botão de próxima etapa
                 FilledButton(
