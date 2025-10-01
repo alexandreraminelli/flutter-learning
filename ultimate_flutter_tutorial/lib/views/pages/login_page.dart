@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:ultimate_flutter_tutorial/views/widget_tree.dart';
-import 'package:ultimate_flutter_tutorial/views/widgets/hero_widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key, required this.title});
@@ -45,8 +45,8 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                HeroWidget(title: widget.title), // header
-                SizedBox(height: 20.0),
+                // Ilustração com animação
+                Lottie.asset("assets/lotties/home.json", height: 300.0),
 
                 // Campo de e-mail
                 TextField(
@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(height: 20.0),
                 // Botão de Login
-                ElevatedButton(
+                FilledButton(
                   onPressed: () {
                     onLoginPressed();
                   },

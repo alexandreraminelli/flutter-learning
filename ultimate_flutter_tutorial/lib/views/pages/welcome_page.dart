@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:ultimate_flutter_tutorial/views/pages/login_page.dart';
+import 'package:ultimate_flutter_tutorial/views/pages/onboarding_page.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -37,7 +38,7 @@ class WelcomePage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return LoginPage(title: "Login");
+                          return OnboardingPage(title: "default");
                         },
                       ),
                     );
@@ -45,7 +46,7 @@ class WelcomePage extends StatelessWidget {
                   style: FilledButton.styleFrom(
                     minimumSize: Size(double.infinity, 40.0), // w-full
                   ),
-                  child: Text("Entrar"),
+                  child: Text("Criar Conta"),
                 ),
                 SizedBox(height: 8.0),
                 // Botão de criar conta
@@ -55,7 +56,7 @@ class WelcomePage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return LoginPage(title: "Criar Conta");
+                          return LoginPage(title: "Login");
                         },
                       ),
                     );
@@ -63,7 +64,7 @@ class WelcomePage extends StatelessWidget {
                   style: TextButton.styleFrom(
                     minimumSize: Size(double.infinity, 40.0), // w-full
                   ),
-                  child: Text("Criar Conta"),
+                  child: Text("Entrar"),
                 ),
               ],
             ),
