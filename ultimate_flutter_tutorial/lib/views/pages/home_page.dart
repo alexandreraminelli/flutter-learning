@@ -7,36 +7,38 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(20.0),
-      child: Column(
-        children: [
-          HeroWidget(title: "Flutter Mapp"), // imagem para animação
-          // Cards
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 10),
-            width: double.infinity, // w-full
-            child: Card(
-              child: Padding(
-                padding: EdgeInsets.all(20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment
-                      .start, // alinhamento do conteúdo do card
-                  children: [
-                    Text(
-                      "Basic Layout",
-                      style: KTextStyle.titleTealText,
-                    ), // título
-                    Text(
-                      "Description",
-                      style: KTextStyle.descriptionText,
-                    ), // descrição
-                  ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            HeroWidget(title: "Flutter Mapp"), // imagem para animação
+            // Cards
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              width: double.infinity, // w-full
+              child: Card(
+                child: Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment
+                        .start, // alinhamento do conteúdo do card
+                    children: [
+                      Text(
+                        "Basic Layout",
+                        style: KTextStyle.titleTealText,
+                      ), // título
+                      Text(
+                        "Description",
+                        style: KTextStyle.descriptionText,
+                      ), // descrição
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

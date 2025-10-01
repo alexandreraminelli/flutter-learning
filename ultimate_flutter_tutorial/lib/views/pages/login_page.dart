@@ -3,7 +3,9 @@ import 'package:ultimate_flutter_tutorial/views/widget_tree.dart';
 import 'package:ultimate_flutter_tutorial/views/widgets/hero_widget.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({super.key, required this.title});
+
+  final String title;
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -11,8 +13,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   // Controladores do form
-  TextEditingController controllerEmail = TextEditingController();
-  TextEditingController controllerPassword = TextEditingController();
+  TextEditingController controllerEmail = TextEditingController(text: "123");
+  TextEditingController controllerPassword = TextEditingController(text: "456");
+
   // Credenciais de exemplo
   String confirmedEmail = "123";
   String confirmedPw = "456";
@@ -20,15 +23,12 @@ class _LoginPageState extends State<LoginPage> {
   /// Código executado ao iniciar a página (objeto adicionado na árvore)
   @override
   void initState() {
-    // TODO: implement initState
-    print("initState");
     super.initState();
   }
 
   /// Código executado ao sair da página (objeto removido da árvore permanentemente)
   @override
   void dispose() {
-    // TODO: implement dispose
     controllerEmail.dispose();
     controllerPassword.dispose();
     super.dispose();
@@ -38,50 +38,56 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            HeroWidget(title: "Login"), // header
-            SizedBox(height: 20.0),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                HeroWidget(title: widget.title), // header
+                SizedBox(height: 20.0),
 
-            // Campo de e-mail
-            TextField(
-              controller: controllerEmail,
-              decoration: InputDecoration(
-                // label: Text("E-mail"),
-                hintText: "E-mail", // placeholder
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15.0),
+                // Campo de e-mail
+                TextField(
+                  controller: controllerEmail,
+                  decoration: InputDecoration(
+                    // label: Text("E-mail"),
+                    hintText: "E-mail", // placeholder
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                  ),
+                  onEditingComplete: () => setState(() {}),
                 ),
-              ),
-              onEditingComplete: () => setState(() {}),
-            ),
-            SizedBox(height: 10.0),
-            // Campo de senha
-            TextField(
-              controller: controllerPassword,
-              decoration: InputDecoration(
-                // label: Text("E-mail"),
-                hintText: "Senha", // placeholder
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15.0),
+                SizedBox(height: 10.0),
+                // Campo de senha
+                TextField(
+                  controller: controllerPassword,
+                  decoration: InputDecoration(
+                    // label: Text("E-mail"),
+                    hintText: "Senha", // placeholder
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                  ),
+                  onEditingComplete: () => setState(() {}),
                 ),
-              ),
-              onEditingComplete: () => setState(() {}),
+                SizedBox(height: 20.0),
+                // Botão de Login
+                ElevatedButton(
+                  onPressed: () {
+                    onLoginPressed();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(double.infinity, 40.0), // w-full
+                  ),
+                  child: Text("Entrar"),
+                ),
+                SizedBox(height: 50.0),
+              ],
             ),
-            SizedBox(height: 20.0),
-            // Botão de Login
-            ElevatedButton(
-              onPressed: () {
-                onLoginPressed();
-              },
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 40.0), // w-full
-              ),
-              child: Text("Entrar"),
-            ),
-          ],
+          ),
         ),
       ),
     );
