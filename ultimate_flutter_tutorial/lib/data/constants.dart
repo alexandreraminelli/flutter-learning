@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+class KConstants {
+  // Nomes de chaves do SharedPreferences
+  static const String themeModeKey = "themeModeKey";
+}
+
 /// Estilos de textos
 class KTextStyle {
   /// Título na cor primária.

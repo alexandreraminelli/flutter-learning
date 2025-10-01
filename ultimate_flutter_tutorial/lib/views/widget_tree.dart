@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ultimate_flutter_tutorial/data/constants.dart';
 import 'package:ultimate_flutter_tutorial/data/notifiers.dart';
 import 'package:ultimate_flutter_tutorial/views/pages/home_page.dart';
 import 'package:ultimate_flutter_tutorial/views/pages/profile_page.dart';
@@ -31,9 +33,16 @@ class WidgetTree extends StatelessWidget {
                 );
               },
             ),
-            onPressed: () {
+            onPressed: () async {
               // Alterar tema da aplicação
               isDarkModeNotifier.value = !isDarkModeNotifier.value;
+              // Salvar no disco a preferência de tema
+              final SharedPreferences prefs =
+                  await SharedPreferences.getInstance();
+              await prefs.setBool(
+                KConstants.themeModeKey,
+                isDarkModeNotifier.value,
+              );
             },
             tooltip: "Tema",
           ),
