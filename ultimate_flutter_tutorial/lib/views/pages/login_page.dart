@@ -98,13 +98,15 @@ class _LoginPageState extends State<LoginPage> {
     if (confirmedEmail == controllerEmail.text &&
         confirmedPw == controllerPassword.text) {
       // Se e-mail e senha estão corretos
-      Navigator.pushReplacement(
+      // limpar pilha de navegação e ir pra Home
+      Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
           builder: (context) {
             return WidgetTree();
           },
         ),
+        (route) => false,
       );
     } else {
       // Credenciais incorretas

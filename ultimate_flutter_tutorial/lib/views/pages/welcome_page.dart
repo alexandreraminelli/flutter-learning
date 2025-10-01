@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:ultimate_flutter_tutorial/views/pages/login_page.dart';
-import 'package:ultimate_flutter_tutorial/views/widget_tree.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
