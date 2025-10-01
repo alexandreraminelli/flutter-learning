@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ultimate_flutter_tutorial/views/pages/home_page.dart';
 import 'package:ultimate_flutter_tutorial/views/widget_tree.dart';
 import 'package:ultimate_flutter_tutorial/views/widgets/hero_widget.dart';
 
@@ -14,6 +13,9 @@ class _LoginPageState extends State<LoginPage> {
   // Controladores do form
   TextEditingController controllerEmail = TextEditingController();
   TextEditingController controllerPassword = TextEditingController();
+  // Credenciais de exemplo
+  String confirmedEmail = "123";
+  String confirmedPw = "456";
 
   /// Código executado ao iniciar a página (objeto adicionado na árvore)
   @override
@@ -70,18 +72,11 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(height: 20.0),
             // Botão de Login
-            FilledButton(
+            ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return WidgetTree();
-                    },
-                  ),
-                );
+                onLoginPressed();
               },
-              style: FilledButton.styleFrom(
+              style: ElevatedButton.styleFrom(
                 minimumSize: Size(double.infinity, 40.0), // w-full
               ),
               child: Text("Entrar"),
@@ -90,5 +85,24 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  /// Função que realiza o login.
+  void onLoginPressed() {
+    if (confirmedEmail == controllerEmail.text &&
+        confirmedPw == controllerPassword.text) {
+      // Se e-mail e senha estão corretos
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return WidgetTree();
+          },
+        ),
+      );
+    } else {
+      // Credenciais incorretas
+      print("Incorreto");
+    }
   }
 }
