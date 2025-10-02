@@ -40,56 +40,62 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(),
       body: Center(
         child: SingleChildScrollView(
-          child: FractionallySizedBox(
-            widthFactor: 0.7, //
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // Ilustração com animação
-                  Lottie.asset("assets/lotties/home.json", height: 300.0),
+          child: LayoutBuilder(
+            builder: (context, BoxConstraints constraints) {
+              return FractionallySizedBox(
+                // fazer o filho ocupar 50% da width se o LayoutBuilder for maior que 500px
+                widthFactor: constraints.maxWidth > 500 ? 0.5 : 1.0,
 
-                  // Campo de e-mail
-                  TextField(
-                    controller: controllerEmail,
-                    decoration: InputDecoration(
-                      // label: Text("E-mail"),
-                      hintText: "E-mail", // placeholder
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15.0),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // Ilustração com animação
+                      Lottie.asset("assets/lotties/home.json", height: 300.0),
+
+                      // Campo de e-mail
+                      TextField(
+                        controller: controllerEmail,
+                        decoration: InputDecoration(
+                          // label: Text("E-mail"),
+                          hintText: "E-mail", // placeholder
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                        ),
+                        onEditingComplete: () => setState(() {}),
                       ),
-                    ),
-                    onEditingComplete: () => setState(() {}),
-                  ),
-                  SizedBox(height: 10.0),
-                  // Campo de senha
-                  TextField(
-                    controller: controllerPassword,
-                    decoration: InputDecoration(
-                      // label: Text("E-mail"),
-                      hintText: "Senha", // placeholder
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15.0),
+                      SizedBox(height: 10.0),
+                      // Campo de senha
+                      TextField(
+                        controller: controllerPassword,
+                        decoration: InputDecoration(
+                          // label: Text("E-mail"),
+                          hintText: "Senha", // placeholder
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                        ),
+                        onEditingComplete: () => setState(() {}),
                       ),
-                    ),
-                    onEditingComplete: () => setState(() {}),
+                      SizedBox(height: 20.0),
+                      // Botão de Login
+                      FilledButton(
+                        onPressed: () {
+                          onLoginPressed();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(double.infinity, 40.0), // w-full
+                        ),
+                        child: Text("Entrar"),
+                      ),
+                      SizedBox(height: 50.0),
+                    ],
                   ),
-                  SizedBox(height: 20.0),
-                  // Botão de Login
-                  FilledButton(
-                    onPressed: () {
-                      onLoginPressed();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 40.0), // w-full
-                    ),
-                    child: Text("Entrar"),
-                  ),
-                  SizedBox(height: 50.0),
-                ],
-              ),
-            ),
+                ),
+              );
+            },
           ),
         ),
       ),
