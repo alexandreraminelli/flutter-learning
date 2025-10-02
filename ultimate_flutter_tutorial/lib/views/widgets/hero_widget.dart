@@ -27,12 +27,19 @@ class HeroWidget extends StatelessWidget {
         children: [
           Hero(
             tag: "hero1", // identificador de pares Hero
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: Image.asset(
-                "assets/images/bg.jpg",
-                color: Colors.teal,
-                colorBlendMode: BlendMode.darken,
+            child: AspectRatio(
+              // Proporção altura e largura
+              // Para cada x de height, haverá
+              aspectRatio: 1920 / 1080, // 1920 / 1080; 2; 0.5
+
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: Image.asset(
+                  "assets/images/bg.jpg",
+                  fit: BoxFit.cover,
+                  color: Colors.teal,
+                  colorBlendMode: BlendMode.darken,
+                ),
               ),
             ),
           ),
