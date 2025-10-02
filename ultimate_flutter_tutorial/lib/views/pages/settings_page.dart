@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ultimate_flutter_tutorial/views/pages/expanded_flexible_page.dart';
+import 'package:ultimate_flutter_tutorial/views/pages/login_page.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({
@@ -211,8 +213,17 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: [
                   // Estilos de botões
                   ElevatedButton(
-                    onPressed: () {},
-                    child: Text("Show SnackBar"),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return ExpandedFlexiblePage();
+                          },
+                        ),
+                      );
+                    },
+                    child: Text("Show Flexible and Expanded"),
                   ),
 
                   FilledButton(onPressed: () {}, child: Text("Filled Button")),
