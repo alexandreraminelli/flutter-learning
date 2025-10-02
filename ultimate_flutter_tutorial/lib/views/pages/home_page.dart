@@ -22,7 +22,9 @@ class HomePage extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
           children: [
+            SizedBox(height: 10.0),
             HeroWidget(title: "Flutter Mapp", nextPage: CoursePage()),
+            SizedBox(height: 5.0),
             // Cards
             ...List.generate(
               list.length, // length (quant. de elementos)
