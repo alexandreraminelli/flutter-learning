@@ -1,4 +1,5 @@
 import "dart:convert";
+import 'dart:nativewrappers/_internal/vm/lib/developer.dart';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -29,9 +30,11 @@ class _CoursePageState extends State<CoursePage> {
     var response = await http.get(url);
     if (response.statusCode == 200) {
       /* Requisição bem-sucedida */
-      var jsonResponse = jsonDecode(response.body) as Map<String, dynamic>;
-      var itemCount = jsonResponse['activity'];
-      print('$itemCount');
+      var jsonResponse =
+          jsonDecode(response.body)
+              as Map<String, dynamic>; // converte String de JSON em um Map
+      var activity = jsonResponse['activity'];
+      print('$activity');
     } else {
       /* Requisição mal-sucedida */
       print('Request failed with status: ${response.statusCode}.');
