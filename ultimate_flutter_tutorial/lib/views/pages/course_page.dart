@@ -13,9 +13,6 @@ class CoursePage extends StatefulWidget {
 }
 
 class _CoursePageState extends State<CoursePage> {
-  // Atributos
-  late Activity activity;
-
   @override
   void initState() {
     getData(); // Obter dados da API
@@ -23,9 +20,9 @@ class _CoursePageState extends State<CoursePage> {
   }
 
   /// Obter dados da API
-  void getData() async {
+  Future getData() async {
     var url = Uri.https(
-      "https://bored-api.appbrewery.com", // URL da API
+      "bored-api.appbrewery.com", // URL da API
       '/random', // endpoint da API
       {'q': '{http}'}, // query parameters (após ?)
     );
@@ -33,10 +30,9 @@ class _CoursePageState extends State<CoursePage> {
     var response = await http.get(url);
     if (response.statusCode == 200) {
       /* Requisição bem-sucedida */
-      activity = Activity.fromJson(
+      return Activity.fromJson(
         jsonDecode(response.body) as Map<String, dynamic>,
       );
-      print(activity.activity); //! DEBUG
     } else {
       /* Requisição mal-sucedida */
       throw Exception("Failed to ");
@@ -47,11 +43,34 @@ class _CoursePageState extends State<CoursePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(children: [HeroWidget(title: "Course")]),
-        ),
+      body: FutureBuilder(
+        future: getData(), // obter dados da API antes de renderizar
+        builder: (context, AsyncSnapshot snapshot) {
+          // Tela de carregamento enquanto página não for carregada
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
+          // Exibir os dados na página (sucesso)
+          else if (snapshot.hasData) {
+            Activity activity = snapshot.data;
+            return SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: Column(
+                  children: [
+                    HeroWidget(title: "Course"),
+
+                    Text("Informações da atividade:"),
+                    Text("Nome: ${activity.activity}"),
+                    Text("Availability: ${activity.availability}")
+                  ],
+                ),
+              ),
+            );
+          } else {
+            return Center(child: Text("Error"));
+          }
+        },
       ),
     );
   }
