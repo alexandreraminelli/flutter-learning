@@ -13,9 +13,6 @@ import 'src/playlists.dart';
 // From https://www.youtube.com/channel/UCwXdFgeE9KYzlDdR7TG9cMw
 const flutterDevAccountId = 'UCwXdFgeE9KYzlDdR7TG9cMw';
 
-// TODO: Replace with your YouTube API Key
-final youTubeApiKey = dotenv.env["API_KEY"] ?? "";
-
 final _router = GoRouter(
   routes: <RouteBase>[
     GoRoute(
@@ -27,8 +24,8 @@ final _router = GoRouter(
         GoRoute(
           path: 'playlist/:id',
           builder: (context, state) {
-            final title = state.queryParams['title']!;
-            final id = state.params['id']!;
+            final title = state.uri.queryParameters['title']!;
+            final id = state.pathParameters['id']!;
             return PlaylistDetails(playlistId: id, playlistName: title);
           },
         ),
@@ -37,8 +34,12 @@ final _router = GoRouter(
   ],
 );
 
-void main() {
-  if (youTubeApiKey == 'AIzaNotAnApiKey') {
+void main() async {
+  await dotenv.load(fileName: "lib/.env");
+
+  final youTubeApiKey = dotenv.env["API_KEY"] ?? "";
+
+  if (youTubeApiKey.isEmpty || youTubeApiKey == 'YOUR_YOUTUBE_API_KEY_HERE') {
     print('youTubeApiKey has not been configured.');
     exit(1);
   }

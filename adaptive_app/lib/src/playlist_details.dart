@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:googleapis/youtube/v3.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/link.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'app_state.dart';
 
@@ -67,7 +67,7 @@ class _PlaylistDetailsListView extends StatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.transparent, Theme.of(context).backgroundColor],
+            colors: [Colors.transparent, Theme.of(context).colorScheme.surface],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             stops: const [0.5, 0.95],
@@ -91,7 +91,7 @@ class _PlaylistDetailsListView extends StatelessWidget {
         children: [
           Text(
             playlistItem.snippet!.title!,
-            style: Theme.of(context).textTheme.bodyText1!.copyWith(
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
               fontSize: 18,
               // fontWeight: FontWeight.bold,
             ),
@@ -101,7 +101,7 @@ class _PlaylistDetailsListView extends StatelessWidget {
               playlistItem.snippet!.videoOwnerChannelTitle!,
               style: Theme.of(
                 context,
-              ).textTheme.bodyText2!.copyWith(fontSize: 12),
+              ).textTheme.bodyMedium!.copyWith(fontSize: 12),
             ),
         ],
       ),
@@ -120,16 +120,18 @@ class _PlaylistDetailsListView extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(21)),
           ),
         ),
-        Link(
-          uri: Uri.parse(
-            'https://www.youtube.com/watch?v=${playlistItem.snippet!.resourceId!.videoId}',
-          ),
-          builder: (context, followLink) => IconButton(
-            onPressed: followLink,
-            color: Colors.red,
-            icon: const Icon(Icons.play_circle_fill),
-            iconSize: 45,
-          ),
+        IconButton(
+          onPressed: () async {
+            final uri = Uri.parse(
+              'https://www.youtube.com/watch?v=${playlistItem.snippet!.resourceId!.videoId}',
+            );
+            if (await canLaunchUrl(uri)) {
+              await launchUrl(uri);
+            }
+          },
+          color: Colors.red,
+          icon: const Icon(Icons.play_circle_fill),
+          iconSize: 45,
         ),
       ],
     );
