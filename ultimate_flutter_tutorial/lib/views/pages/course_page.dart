@@ -2,6 +2,7 @@ import "dart:convert";
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:ultimate_flutter_tutorial/data/classes/activity_class.dart';
 import 'package:ultimate_flutter_tutorial/views/widgets/hero_widget.dart';
 
 class CoursePage extends StatefulWidget {
@@ -12,6 +13,9 @@ class CoursePage extends StatefulWidget {
 }
 
 class _CoursePageState extends State<CoursePage> {
+  // Atributos
+  late Activity activity;
+
   @override
   void initState() {
     getData(); // Obter dados da API
@@ -29,14 +33,13 @@ class _CoursePageState extends State<CoursePage> {
     var response = await http.get(url);
     if (response.statusCode == 200) {
       /* Requisição bem-sucedida */
-      var jsonResponse =
-          jsonDecode(response.body)
-              as Map<String, dynamic>; // converte String de JSON em um Map
-      var activity = jsonResponse['activity'];
-      print('$activity');
+      activity = Activity.fromJson(
+        jsonDecode(response.body) as Map<String, dynamic>,
+      );
+      print(activity.activity); //! DEBUG
     } else {
       /* Requisição mal-sucedida */
-      print('Request failed with status: ${response.statusCode}.');
+      throw Exception("Failed to ");
     }
   }
 
