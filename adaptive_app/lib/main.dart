@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +14,7 @@ import 'src/playlists.dart';
 const flutterDevAccountId = 'UCwXdFgeE9KYzlDdR7TG9cMw';
 
 // TODO: Replace with your YouTube API Key
-const youTubeApiKey = ;
+final youTubeApiKey = dotenv.env["API_KEY"] ?? "";
 
 final _router = GoRouter(
   routes: <RouteBase>[
